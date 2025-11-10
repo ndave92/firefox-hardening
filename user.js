@@ -236,12 +236,18 @@ user_pref("browser.search.suggest.enabled", true);
 user_pref("browser.search.visualSearch.featureGate", true); // enable Google Lens image search
 
 /** AI ***/
-user_pref("browser.ml.chat.shortcuts", false); // "Enable custom shortcuts for the AI chatbot sidebar"
+user_pref("browser.ml.chat.shortcuts", false);
 user_pref("browser.ml.chat.shortcuts.custom", false);
 user_pref("browser.ml.pageAssist.enabled", false);
-user_pref("browser.tabs.groups.smart.enabled", false); // "Use AI to suggest tabs and a name for tab groups" in settings
+user_pref("browser.tabs.groups.smart.enabled", false);
 user_pref("browser.tabs.groups.smart.userEnabled", false);
 user_pref("extensions.ml.enabled", false); // might only be relevant for app developers
+
+/** TELEMETRY */
+user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disables Search Engine Results Page telemetry categorization
+user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false); // disable telemetry ping for Firefox Accounts
+user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
+user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable telemetry for Nimbus experiments
 
 /****************************************************************************
  * SECTION: SMOOTHFOX                                                       *
