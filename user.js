@@ -225,6 +225,8 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // remove Mozilla promo from account menu
 user_pref("widget.non-native-theme.win11.scrollbar.force-overlay-style", true);
 user_pref("widget.non-native-theme.scrollbar.style", 1); // scrollbar style to macOS-like
+user_pref("browser.newtabpage.activity-stream.system.showWeather", true); // show weather on new tab page
+user_pref("browser.newtabpage.activity-stream.weather.display", "detailed"); // detailed weather info
 
 /** NETWORK ***/
 user_pref("network.http.http3.use_nspr_for_io", false); // rust QUIC
