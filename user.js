@@ -230,6 +230,7 @@ user_pref("browser.newtabpage.activity-stream.weather.display", "detailed"); // 
 
 /** NETWORK ***/
 user_pref("network.http.http3.use_nspr_for_io", false); // rust QUIC
+user_pref("media.peerconnection.ice.default_address_only", true); // WebRTC only use default route
 
 /** SEARCH ***/
 user_pref("browser.search.suggest.enabled", true);
