@@ -228,8 +228,23 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 
 /** MOZILLA UI ***/
 user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // remove Mozilla promo from account menu
-// user_pref("widget.non-native-theme.win11.scrollbar.force-overlay-style", true); // windows only?
-user_pref("widget.non-native-theme.scrollbar.style", 1); // scrollbar style to macOS-like
+
+// PREF: Set non-native scrollbar style
+// Values:
+// 0 = Default (System theme)
+// 1 = macOS (Rounded pill, usually overlay)
+// 2 = GTK (Linux style, square edges)
+// 3 = Android (Mobile style, very thin)
+// 4 = Windows 10 (Traditional, boxy, wider)
+// 5 = Windows 11 (Modern, rounded corners)
+// user_pref("widget.non-native-theme.scrollbar.style", 0);
+
+// PREF: Force "Overlay" behavior for Windows 11 style
+// Only affects scrollbars if widget.non-native-theme.scrollbar.style = 5
+// true = Scrollbar floats over content, is thinner, and expands on hover
+// false = Scrollbar takes up space (layout shifts) and is always persistent
+// user_pref("widget.non-native-theme.win11.scrollbar.force-overlay-style", true);
+
 user_pref("browser.newtabpage.activity-stream.system.showWeather", true); // show weather on new tab page
 user_pref("browser.newtabpage.activity-stream.weather.display", "detailed"); // detailed weather info
 
