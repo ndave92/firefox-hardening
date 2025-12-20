@@ -228,6 +228,8 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 
 /** MOZILLA UI ***/
 user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // remove Mozilla promo from account menu
+user_pref("sidebar.revamp", true); // enable new sidebar revamp UI, you can disable it if you dislike it
+user_pref("sidebar.revamp.round-content-area", true); // round sidebar content area corner, you can disable it if you dislike it
 
 // PREF: Set non-native scrollbar style
 // Values:
@@ -253,16 +255,22 @@ user_pref("network.http.http3.use_nspr_for_io", false); // rust QUIC
 user_pref("media.peerconnection.ice.default_address_only", true); // WebRTC only use default route
 
 /** SEARCH ***/
-user_pref("browser.search.suggest.enabled", true);
-user_pref("browser.search.visualSearch.featureGate", true); // enable Google Lens image search
+user_pref("browser.search.suggest.enabled", true); // you can disable search suggestions if you want, but I prefer to have them
+user_pref("browser.search.visualSearch.featureGate", true); // enable Google Lens image search (only works if Google is the default search engine)
 
 /** AI ***/
-user_pref("browser.ml.chat.shortcuts", false);
-user_pref("browser.ml.chat.shortcuts.custom", false);
-user_pref("browser.ml.pageAssist.enabled", false);
-user_pref("browser.tabs.groups.smart.enabled", false);
-user_pref("browser.tabs.groups.smart.userEnabled", false);
-user_pref("extensions.ml.enabled", false); // might only be relevant for app developers
+user_pref("browser.ml.chat.shortcuts", false); // disable AI chat shortcuts
+user_pref("browser.ml.chat.shortcuts.custom", false); // disable AI chat shortcuts
+user_pref("browser.ml.pageAssist.enabled", false); // disable AI-powered page assistance
+user_pref("browser.ml.smartAssist.enabled", false); // disable AI-powered smart assistance
+user_pref("browser.tabs.groups.smart.enabled", false); // disable AI-powered tab groups
+user_pref("browser.tabs.groups.smart.userEnabled", false); // disable tab groups based on AI
+user_pref("browser.urlbar.quicksuggest.mlEnabled", false); // disable AI-powered suggestions in URL bar
+user_pref("extensions.ml.enabled", false); // disable extension recommendations based on AI
+user_pref("pdfjs.enableAltText", false); // disable PDF alt text (AI-generated descriptions)
+user_pref("pdfjs.enableAltTextForEnglish", false); // disable PDF alt text for English language
+user_pref("pdfjs.enableAltTextModelDownload", false); // disable PDF alt text model download
+user_pref("places.semanticHistory.featureGate", false); // disable AI-powered semantic history
 
 /** TELEMETRY */
 user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disables Search Engine Results Page telemetry categorization
