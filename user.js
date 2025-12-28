@@ -227,6 +227,7 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 // Enter your personal overrides below this line:
 
 /** MOZILLA UI ***/
+user_pref("browser.tabs.splitView.enabled", true); // enable split view
 user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // remove Mozilla promo from account menu
 user_pref("sidebar.revamp", true); // enable new sidebar revamp UI, you can disable it if you dislike it
 user_pref("sidebar.revamp.round-content-area", true); // round sidebar content area corner, you can disable it if you dislike it
@@ -274,6 +275,7 @@ user_pref("places.semanticHistory.featureGate", false); // disable AI-powered se
 
 /** TELEMETRY */
 user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disables Search Engine Results Page telemetry categorization
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
 user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false); // disable telemetry ping for Firefox Accounts
 user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
 user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable telemetry for Nimbus experiments
