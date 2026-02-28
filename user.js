@@ -242,7 +242,6 @@ user_pref("places.semanticHistory.featureGate", false); // disable AI-powered se
 
 /** TELEMETRY */
 user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disables Search Engine Results Page telemetry categorization
-user_pref("datareporting.policy.dataSubmissionEnabled", false);
 user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false); // disable telemetry ping for Firefox Accounts
 user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
 user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable telemetry for Nimbus experiments
