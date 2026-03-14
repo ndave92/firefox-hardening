@@ -269,7 +269,7 @@ user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaRatio", "2");
 user_pref("general.smoothScroll.msdPhysics.slowdownSpringConstant", 250);
 user_pref("general.smoothScroll.currentVelocityWeighting", "1");
 user_pref("general.smoothScroll.stopDecelerationWeighting", "1");
-user_pref("mousewheel.default.delta_multiplier_y", 400); // 250-400, default 300; adjust this number to your liking
+user_pref("mousewheel.default.delta_multiplier_y", 300); // 250-400, default 300; adjust this number to your liking
 
 /****************************************************************************
  * END: BETTERFOX                                                           *
