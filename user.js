@@ -246,6 +246,12 @@ user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false);
 user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
 user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable telemetry for Nimbus experiments
 
+/** VPN */
+user_pref("browser.contentblocking.report.hide_vpn_banner", true); // hide VPN banner in content blocking report
+user_pref("browser.privatebrowsing.vpnpromourl", ""); // clear VPN promotional URL for private browsing
+user_pref("browser.vpn_promo.enabled", false); // disable VPN promotional content in the browser
+user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.vpnEnabled", false); // disable VPN enabled flag for Firefox Accounts toolbar
+
 /****************************************************************************
  * SECTION: SMOOTHFOX                                                       *
 ****************************************************************************/
