@@ -18,7 +18,7 @@
  * SECTION: FASTFOX                                                         *
  ****************************************************************************/
 user_pref("gfx.canvas.accelerated.cache-size", 256);
-user_pref("gfx.webrender.layer-compositor", true);
+// user_pref("gfx.webrender.layer-compositor", true); //temporarily disabled for Firefox v149.0, it causes rendering issues, performance degradation on macOS at the moment; needs to be investigated further, you can re-enable it if you want to test it out, but be aware of potential issues
 
 /****************************************************************************
  * SECTION: SECUREFOX                                                       *
