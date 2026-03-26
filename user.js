@@ -10,7 +10,7 @@
 /****************************************************************************
  * Betterfox                                                                *
  * "Ad meliora"                                                             *
- * version: 148                                                             *
+ * version: 149                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
 ****************************************************************************/
 
@@ -18,7 +18,7 @@
  * SECTION: FASTFOX                                                         *
  ****************************************************************************/
 user_pref("gfx.canvas.accelerated.cache-size", 256);
-// user_pref("gfx.webrender.layer-compositor", true); //temporarily disabled for Firefox v149.0, it causes rendering issues, performance degradation on macOS at the moment; needs to be investigated further, you can re-enable it if you want to test it out, but be aware of potential issues
+// user_pref("gfx.webrender.layer-compositor", true); //temporarily disabled for Firefox v149, fix scheduled for Firefox v150; it causes rendering issues, performance degradation on macOS at the moment; needs to be investigated further, you can re-enable it if you want to test it out, but be aware of potential issues; you can keep it enabled on Windows, because it seems to be unaffected; based on the code I saw, this layer compositor feature is not supported on Linux yet, so keep it disabled for now on Linux distros; fyi related bugzilla ticket: https://bugzilla.mozilla.org/show_bug.cgi?id=2017820
 
 /****************************************************************************
  * SECTION: SECUREFOX                                                       *
