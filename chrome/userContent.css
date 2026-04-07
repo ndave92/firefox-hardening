@@ -1,0 +1,5 @@
+/* Main Firefox userContent.css
+   Keep this file small and import per-site fixes. 
+   You should enable "toolkit.legacyUserProfileCustomizations.stylesheets" in about:config or user.js by setting it to true, because Firefox does not load userChrome.css and/or userContent.css by default.*/
+
+@import url("epic.css");

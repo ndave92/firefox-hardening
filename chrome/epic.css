@@ -1,0 +1,8 @@
+/* Epic Games Store: fix jagged scaled images in Firefox
+   Scope this only to Epic domains to avoid affecting other sites. */
+
+@-moz-document domain("store.epicgames.com"), domain("epicgames.com") {
+  img {
+    image-rendering: auto !important;
+  }
+}
