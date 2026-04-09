@@ -192,9 +192,9 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 // Enter your personal overrides below this line:
 
 /** MOZILLA UI ***/
-user_pref("browser.tabs.splitView.enabled", true); // enable split view; might be enabled by default from v149, but you can disable it if you dislike it
 // user_pref("browser.newtabpage.activity-stream.system.showWeather", true); // show weather on new tab page; optional QoL feature, you can enable it if you like having weather info on the new tab page, but be aware that it may cause additional network requests and potential information leakage about your location; if you enable this, you can further customize the weather display with the following preference:
 // user_pref("browser.newtabpage.activity-stream.weather.display", "detailed"); // use detailed weather info; use "simple" for just temperature
+user_pref("browser.tabs.splitView.enabled", true); // enable split view; might be enabled by default from v149, but you can disable it if you dislike it
 user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // remove Mozilla promo from account menu
 user_pref("sidebar.revamp", true); // enable new sidebar revamp UI; might be enabled by default from v149, but you can disable it if you dislike it
 user_pref("sidebar.revamp.round-content-area", true); // enable rounded sidebar content area corner; you can disable it if you dislike it
@@ -235,9 +235,9 @@ user_pref("network.file.disable_unc_paths", true); // block UNC path handling to
 user_pref("network.http.http3.use_nspr_for_io", false); // switches Firefox's QUIC stack to use the Rust-based IO path instead of NSPR; may improve performance on some systems
 
 /** DOWNLOADS ***/
-user_pref("browser.download.always_ask_before_handling_new_types", true); // always ask how to handle new MIME types
-user_pref("browser.download.alwaysOpenPanel", false); // keep the download panel from opening on every download
-user_pref("browser.download.useDownloadDir", false); // always ask where to save downloads for safer file handling
+// user_pref("browser.download.always_ask_before_handling_new_types", true); // always ask how to handle new MIME types
+// user_pref("browser.download.alwaysOpenPanel", false); // keep the download panel from opening on every download
+// user_pref("browser.download.useDownloadDir", false); // always ask where to save downloads for safer file handling
 user_pref("browser.helperApps.deleteTempFileOnExit", true); // delete helper-app temp files when Firefox exits
 user_pref("extensions.postDownloadThirdPartyPrompt", false); // keep strict prompts for third-party extension installs; this will prevent potentially unwanted extensions from being installed without explicit user consent, but it may also cause more prompts if you frequently install extensions from third-party sources, so use this if you prefer stronger security against unwanted extensions over fewer prompts
 
