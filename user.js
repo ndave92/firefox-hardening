@@ -10,15 +10,9 @@
 /****************************************************************************
  * Betterfox                                                                *
  * "Ad meliora"                                                             *
- * version: 149                                                             *
+ * version: 150                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
 ****************************************************************************/
-
-/****************************************************************************
- * SECTION: FASTFOX                                                         *
- ****************************************************************************/
-user_pref("gfx.canvas.accelerated.cache-size", 256);
-// user_pref("gfx.webrender.layer-compositor", true); //temporarily disabled for Firefox v149, fix scheduled for Firefox v150; it causes rendering issues, performance degradation on macOS at the moment; needs to be investigated further; you can re-enable it if you want to test it out, but be aware of potential issues; it is enabled by default on Windows and it's working as expected there, so keep it enabled on Windows systems; based on the code I saw, this layer compositor feature is not supported on Linux yet, so keep it disabled for now on Linux distros (let me know if I'm wrong about this, thx); fyi here is the related bugzilla ticket: https://bugzilla.mozilla.org/show_bug.cgi?id=2017820
 
 /****************************************************************************
  * SECTION: SECUREFOX                                                       *
@@ -226,7 +220,7 @@ user_pref("security.ssl.require_safe_negotiation", true); // require safe TLS re
 
 /** NETWORK ***/
 user_pref("captivedetect.canonicalURL", ""); // clear captive portal probe endpoint for extra outbound reduction
-user_pref("media.peerconnection.ice.default_address_only", true); // WebRTC only use default route
+user_pref("media.peerconnection.ice.default_address_only", true); // WebRTC only use default route; might cause issues with VPNs or network interfaces, so disable if you have connectivity problems with WebRTC-based applications (e.g. video calls); this is a privacy improvement that prevents WebRTC from leaking local IP addresses, but it may cause connectivity issues in some network configurations, so use this if you prefer better privacy over potential connectivity problems
 user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true); // keep WebRTC proxy-aware when a proxy is configured
 // user_pref("media.wmf.zero-copy-nv12-textures-force-enabled", true); // improves CPU usage on AMD GPU systems; you might want to enable this if you have an AMD graphics card
 user_pref("network.captive-portal-service.enabled", false); // disable captive portal checks to reduce background requests
