@@ -222,9 +222,9 @@ user_pref("extensions.postDownloadThirdPartyPrompt", false); // keep strict prom
 
 /** GEOLOCATION ***/
 // user_pref("geo.enabled", false); // disable geolocation API entirely; this will prevent all websites from being able to access your location through the browser, but it may also break functionality on some sites that rely on geolocation for features like maps, local search results, or location-based content, so use this if you prefer maximum privacy over potential website functionality issues
-// user_pref("geo.provider.ms-windows-location", false) // disable Windows geolocation provider; this will prevent Firefox from using the Windows location service to determine your location
-// user_pref("geo.provider.use_corelocation", false) // disable macOS Core Location geolocation provider
-// user_pref("geo.provider.use_geoclue", false) // disable Linux geolocation provider; this will prevent Firefox from using the Geoclue service to determine your location on Linux
+// user_pref("geo.provider.ms-windows-location", false); // disable Windows geolocation provider; this will prevent Firefox from using the Windows location service to determine your location
+// user_pref("geo.provider.use_corelocation", false); // disable macOS Core Location geolocation provider
+// user_pref("geo.provider.use_geoclue", false); // disable Linux geolocation provider; this will prevent Firefox from using the Geoclue service to determine your location on Linux
 
 /** MEDIA ***/
 // user_pref("media.wmf.zero-copy-nv12-textures-force-enabled", true); // enables zero-copy NV12 textures to improve CPU usage on AMD GPU systems; you might want to enable this if you have an AMD graphics card
@@ -260,7 +260,6 @@ user_pref("network.captive-portal-service.enabled", false); // captive portal de
 user_pref("network.connectivity-service.enabled", false); // disable connectivity checks that contact Mozilla endpoints
 user_pref("network.dns.echconfig.enabled", true); // enable ECH (Encrypted Client Hello) configuration for DNS over HTTPS; should be enabled by default
 user_pref("network.file.disable_unc_paths", true); // block UNC path handling to reduce Windows network-share exposure
-user_pref("network.IDN_show_punycode", true); // show punycode for all IDN domains to prevent homograph attacks; this will make Firefox display the punycode representation of internationalized domain names (IDNs) instead of the Unicode characters, which can help protect against homograph attacks where malicious sites use similar-looking characters to impersonate legitimate domains, but it may also make some non-ASCII domain names harder to read, so use this if you prefer better security against homograph attacks over readability of internationalized domain names
 user_pref("network.http.http3.use_nspr_for_io", false); // switches Firefox's QUIC stack to use the Rust-based IO path instead of NSPR; may improve performance on some systems
 
 /** PERMISSIONS ***/
@@ -269,8 +268,6 @@ user_pref("network.http.http3.use_nspr_for_io", false); // switches Firefox's QU
 // 1 = always allow
 // 2 = block;
 user_pref("permissions.default.camera", 0); // set default camera permission to "always ask" for better privacy
-user_pref("permissions.default.desktop-notification", 2); // block desktop notification permission requests to prevent potential abuse and annoyance from websites asking for permission to send notifications; if you want to allow notifications for specific sites, you can manage exceptions in the site permissions settings
-user_pref("permissions.default.geo", 2); // block geolocation permission requests to prevent potential abuse and information leakage about your location; if you want to allow geolocation for specific sites, you can manage exceptions in the site permissions settings
 user_pref("permissions.default.image", 1); // allow images by default; you can set this to 2 to block all images, but be aware that it will break the layout and functionality of many websites, so use this if you prefer stronger privacy against image-based tracking over website usability
 user_pref("permissions.default.local-network", 0); // set local network permission to "always ask" to prevent potential abuse of local network access by websites; this will prompt you for permission whenever a website tries to access devices on your local network, which can help protect against certain types of attacks that try to exploit vulnerabilities in local network devices
 user_pref("permissions.default.loopback-network", 0); // set loopback network permission to "always ask" to prevent potential abuse of loopback network access by websites; this will prompt you for permission whenever a website tries to access services running on your own machine, which can help protect against certain types of attacks that try to exploit vulnerabilities in local services
@@ -335,8 +332,8 @@ user_pref("browser.sessionstore.privacy_level", 2); // avoid storing extra form 
 // user_pref("privacy.clearOnShutdown_v2.cache", true); // clear cache on shutdown
 // user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", true); // clear cookies and storage on shutdown (except allowed sites); i suggest to add any sites you log into regularly to the cookie exceptions list to avoid having to log in every time you restart the browser, but this is up to you
 // user_pref("privacy.clearOnShutdown_v2.formdata", true); // clear form history on shutdown
-// user_pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", true); // keep history and download history on shutdown; if you want to clear history on shutdown, you can set this to true, but be aware that it will also clear your download history, which cannot be separated at the moment; if you want to keep download history but clear browsing history, you can set this to false and then use the "Clear History" button in the library menu to clear browsing history while keeping download history; hopefully Mozilla will add more granular options for this in the future
-// user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", true); // clear history, form data and download history on shutdown; this is a combined option that will clear all three of these data types together; if you want to keep download history but clear browsing history and form data, you can set this to false and then use the "Clear History" button in the library menu to clear browsing history and form data while keeping download history; hopefully Mozilla will add more granular options for this in the future
+// user_pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", true); // [Firefox 136+] clear browsing history and download history on shutdown; allows more granular control than the legacy v2 consolidated preference below
+// user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", true); // [Firefox 128-135] clear history, form data, and download history on shutdown; consolidated legacy preference maintained for compatibility with ESR and older releases
 // user_pref("privacy.clearOnShutdown_v2.siteSettings", false); // keep site settings on shutdown
 // user_pref("privacy.clearHistory.cache", true); // include cache in manual Clear History defaults
 // user_pref("privacy.clearHistory.cookiesAndStorage", true); // include cookies/storage in manual Clear History defaults
@@ -366,7 +363,7 @@ user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false);
 // user_pref("network.trr.uri", "https://dns.quad9.net/dns-query"); // enable this as well if you set network.trr.mode to 3; you can change this to another DoH provider if you prefer, but make sure to use a reputable one that supports DNSSEC and has a good privacy policy (I would avoid Google and Cloudeflare due to privacy concerns, but Quad9, NextDNS, AdGuard and Mullvad are good options)
 user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
 user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable telemetry for Nimbus experiments
-user_pref("toolkit.telemetry.reportingpolicy.firstRun", false); // disable telemetry reporting policy first run ping")
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", false); // disable telemetry reporting policy first run ping
 
 /** VPN ***/
 user_pref("browser.contentblocking.report.hide_vpn_banner", true); // hide VPN banner in content blocking report
