@@ -219,7 +219,7 @@ user_pref("browser.download.always_ask_before_handling_new_types", true); // alw
 // user_pref("browser.download.alwaysOpenPanel", false); // keep the download panel from opening on every download
 // user_pref("browser.download.useDownloadDir", false); // always ask where to save downloads for safer file handling
 user_pref("browser.helperApps.deleteTempFileOnExit", true); // delete helper-app temp files when Firefox exits
-user_pref("extensions.postDownloadThirdPartyPrompt", false); // keep strict prompts for third-party extension installs; this will prevent potentially unwanted extensions from being installed without explicit user consent, but it may also cause more prompts if you frequently install extensions from third-party sources, so use this if you prefer stronger security against unwanted extensions over fewer prompts
+user_pref("extensions.postDownloadThirdPartyPrompt", true); // keep strict prompts for third-party extension installs; this will prevent potentially unwanted extensions from being installed without explicit user consent, but it may also cause more prompts if you frequently install extensions from third-party sources, so use this if you prefer stronger security against unwanted extensions over fewer prompts
 
 /** GEOLOCATION ***/
 // user_pref("geo.enabled", false); // disable geolocation API entirely; this will prevent all websites from being able to access your location through the browser, but it may also break functionality on some sites that rely on geolocation for features like maps, local search results, or location-based content, so use this if you prefer maximum privacy over potential website functionality issues
