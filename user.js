@@ -19,7 +19,7 @@
 ****************************************************************************/
 /** GENERAL ***/
 user_pref("gfx.content.skia-font-cache-size", 20);
-user_pref("content.notify.interval", 100000);
+// user_pref("content.notify.interval", 100000); // default = 120000
 
 /** GFX ***/
 user_pref("gfx.canvas.accelerated.cache-size", 512);
@@ -231,7 +231,7 @@ user_pref("places.semanticHistory.featureGate", false); // disable AI-powered se
 
 /** ANTI-FINGERPRINTING ***/
 // user_pref("privacy.resistFingerprinting", true); // enable built-in anti-fingerprinting features; read this before enabling: https://support.mozilla.org/en-US/kb/resist-fingerprinting
-user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // block extension list access from web content for better fingerprinting resistance; this is an RFP feature, but you can enable it even if you don't use the full RFP mode; be aware that this may break some websites that rely on extension detection for functionality, but it will improve your privacy against fingerprinting techniques that try to identify users based on their installed extensions
+// user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // block extension list access from web content for better fingerprinting resistance; Mozilla lists it as RFP-gated (enabled only when privacy.resistFingerprinting is enabled)
 // user_pref("privacy.resistFingerprinting.letterboxing", true); // enable letterboxing to add opaque padding around the content area so the reported inner window dimensions are always a multiple of 200×100px, preventing viewport-based fingerprinting
 // user_pref("privacy.resistFingerprinting.pbmode", true); // enable built-in anti-fingerprinting features in private browsing mode ONLY
 // user_pref("privacy.spoof_english", 1); // spoof English locale to reduce language-based fingerprinting; this will make your browser report as English (United States) to websites, which can help reduce the uniqueness of your browser fingerprint if you are not actually using an English locale; however, it may cause some websites to display content in English instead of your native language, so use this if you prefer better fingerprinting resistance over localized content
@@ -248,7 +248,7 @@ user_pref("browser.download.always_ask_before_handling_new_types", true); // alw
 // user_pref("browser.download.alwaysOpenPanel", false); // keep the download panel from opening on every download
 // user_pref("browser.download.useDownloadDir", false); // always ask where to save downloads for safer file handling
 user_pref("browser.helperApps.deleteTempFileOnExit", true); // delete helper-app temp files when Firefox exits
-user_pref("extensions.postDownloadThirdPartyPrompt", true); // keep strict prompts for third-party extension installs; this will prevent potentially unwanted extensions from being installed without explicit user consent, but it may also cause more prompts if you frequently install extensions from third-party sources, so use this if you prefer stronger security against unwanted extensions over fewer prompts
+user_pref("extensions.postDownloadThirdPartyPrompt", false); // arkenfox 2661: "disable bypassing 3rd party extension install prompts"
 
 /** GEOLOCATION ***/
 // user_pref("geo.enabled", false); // disable geolocation API entirely; this will prevent all websites from being able to access your location through the browser, but it may also break functionality on some sites that rely on geolocation for features like maps, local search results, or location-based content, so use this if you prefer maximum privacy over potential website functionality issues
@@ -297,14 +297,14 @@ user_pref("network.http.http3.use_nspr_for_io", false); // switches Firefox's QU
 // 0 = always ask
 // 1 = always allow
 // 2 = block;
-user_pref("permissions.default.camera", 0); // set default camera permission to "always ask" for better privacy
-user_pref("permissions.default.image", 1); // allow images by default; you can set this to 2 to block all images, but be aware that it will break the layout and functionality of many websites, so use this if you prefer stronger privacy against image-based tracking over website usability
-user_pref("permissions.default.local-network", 0); // set local network permission to "always ask" to prevent potential abuse of local network access by websites; this will prompt you for permission whenever a website tries to access devices on your local network, which can help protect against certain types of attacks that try to exploit vulnerabilities in local network devices
-user_pref("permissions.default.loopback-network", 0); // set loopback network permission to "always ask" to prevent potential abuse of loopback network access by websites; this will prompt you for permission whenever a website tries to access services running on your own machine, which can help protect against certain types of attacks that try to exploit vulnerabilities in local services
-user_pref("permissions.default.microphone", 0); // set default microphone permission to "always ask" for better privacy
-user_pref("permissions.default.screen-wake-lock", 1); // allow screen wake lock by default; this is a feature that allows websites to prevent your screen from dimming or locking while you are using them, which can be useful for certain applications like video players or online presentations; if you want to block this feature for all sites, you can set this to 2, but be aware that it may cause inconvenience on sites that use it for legitimate purposes, so use this if you prefer stronger privacy against potential abuse of wake locks over convenience
-user_pref("permissions.default.shortcuts", 0); // set default shortcuts permission to "always ask" to prevent potential abuse of keyboard shortcuts by websites; this will prompt you for permission whenever a website tries to register global keyboard shortcuts, which can help protect against malicious sites that try to hijack your keyboard input
-user_pref("permissions.default.xr", 2); // block WebXR permission requests to prevent potential abuse of augmented reality and virtual reality features by websites; if you want to allow WebXR for specific sites, you can manage exceptions in the site permissions settings
+// user_pref("permissions.default.camera", 0); // set default camera permission to "always ask" for better privacy; default = 0
+// user_pref("permissions.default.image", 1); // allow images by default; you can set this to 2 to block all images, but be aware that it will break the layout and functionality of many websites, so use this if you prefer stronger privacy against image-based tracking over website usability; default = 1
+// user_pref("permissions.default.local-network", 0); // set local network permission to "always ask" to prevent potential abuse of local network access by websites; this will prompt you for permission whenever a website tries to access devices on your local network, which can help protect against certain types of attacks that try to exploit vulnerabilities in local network devices; default = 0
+// user_pref("permissions.default.loopback-network", 0); // set loopback network permission to "always ask" to prevent potential abuse of loopback network access by websites; this will prompt you for permission whenever a website tries to access services running on your own machine, which can help protect against certain types of attacks that try to exploit vulnerabilities in local services; default = 0
+// user_pref("permissions.default.microphone", 0); // set default microphone permission to "always ask" for better privacy; default = 0
+// user_pref("permissions.default.screen-wake-lock", 1); // allow screen wake lock by default; this is a feature that allows websites to prevent your screen from dimming or locking while you are using them, which can be useful for certain applications like video players or online presentations; if you want to block this feature for all sites, you can set this to 2, but be aware that it may cause inconvenience on sites that use it for legitimate purposes, so use this if you prefer stronger privacy against potential abuse of wake locks over convenience; default = 1
+// user_pref("permissions.default.shortcuts", 0); // set default shortcuts permission to "always ask" to prevent potential abuse of keyboard shortcuts by websites; this will prompt you for permission whenever a website tries to register global keyboard shortcuts, which can help protect against malicious sites that try to hijack your keyboard input; default = 0
+user_pref("permissions.default.xr", 2); // block WebXR permission requests to prevent potential abuse of augmented reality and virtual reality features by websites; if you want to allow WebXR for specific sites, you can manage exceptions in the site permissions settings; default = 0
 
 /** PRIVACY **/
 user_pref("device.sensors.enabled", false); // disable access to device sensors (accelerometer, gyroscope, magnetometer); this can help improve privacy by preventing websites from being able to access sensor data that can be used for tracking and fingerprinting purposes, but it may also break functionality on some sites that rely on sensor data for features like motion-based interactions or device orientation detection, so use this if you prefer better privacy over potential website functionality issues
@@ -316,8 +316,8 @@ user_pref("device.sensors.enabled", false); // disable access to device sensors 
 user_pref("dom.battery.enabled", false); // disable access to battery API; this will prevent websites from being able to detect your device's battery status, which can be used for tracking and fingerprinting purposes, but it may also break functionality on some sites that rely on battery information for features like power-saving modes or performance optimizations, so use this if you prefer better privacy over potential website functionality issues
 // user_pref("dom.event.clipboardevents.enabled", false); // disable clipboard events for better privacy; this will prevent websites from being able to detect when you copy, paste, or cut content, which can help protect against certain types of tracking and fingerprinting techniques that rely on clipboard event detection; however, it may also break functionality on some sites that use clipboard events for legitimate purposes, such as custom copy-paste behavior or rich text editing features, so use this if you prefer better privacy over potential website functionality issues
 // user_pref("dom.gamepad.enabled", false); // disable access to gamepad API; this can help improve privacy by preventing websites from being able to detect and track users based on their gamepad usage, but it may also break functionality on websites that rely on gamepad input (e.g. xbox), so use this if you prefer better privacy over potential website functionality issues
-user_pref("privacy.trackingprotection.allow_list.baseline.enabled", true); // keep the built-in tracking protection allowlist enabled to prevent breakage on sites with known issues; this is a list of sites that are allowed to load certain tracking resources in order to prevent breakage of functionality on those sites, but it may also allow some tracking on those sites, so use this if you prefer better compatibility over maximum blocking of trackers
-user_pref("privacy.trackingprotection.allow_list.convenience.enabled", true); // keep the built-in tracking protection allowlist for convenience features enabled to prevent breakage on sites with known issues; this is a list of sites that are allowed to load certain resources in order to prevent breakage of convenience features on those sites, but it may also allow some tracking on those sites, so use this if you prefer better compatibility over maximum blocking of trackers
+// user_pref("privacy.trackingprotection.allow_list.baseline.enabled", true); // keep the built-in tracking protection allowlist enabled to prevent breakage on sites with known issues; this is a list of sites that are allowed to load certain tracking resources in order to prevent breakage of functionality on those sites, but it may also allow some tracking on those sites, so use this if you prefer better compatibility over maximum blocking of trackers; default = true
+// user_pref("privacy.trackingprotection.allow_list.convenience.enabled", true); // keep the built-in tracking protection allowlist for convenience features enabled to prevent breakage on sites with known issues; this is a list of sites that are allowed to load certain resources in order to prevent breakage of convenience features on those sites, but it may also allow some tracking on those sites, so use this if you prefer better compatibility over maximum blocking of trackers; ; default = true
 
 /** SEARCH & URL BAR ***/
 user_pref("browser.search.separatePrivateDefault", true); // enable a separate private-window default search engine
@@ -335,13 +335,13 @@ user_pref("browser.urlbar.wikipedia.featureGate", false); // disable Wikipedia s
 user_pref("browser.urlbar.yelp.featureGate", false); // disable Yelp suggestion entries in the urlbar
 
 /** SECURITY ***/
-user_pref("devtools.debugger.remote-enabled", false); // disable remote debugging to prevent potential unauthorized access to the browser's debugging interface, which could be exploited by attackers to gain insights into browser internals or execute malicious code; this is especially important if you do not use remote debugging features, so use this if you prefer better security against potential remote attacks over the ability to use remote debugging features
+// user_pref("devtools.debugger.remote-enabled", false); // disable remote debugging to prevent potential unauthorized access to the browser's debugging interface, which could be exploited by attackers to gain insights into browser internals or execute malicious code; this is especially important if you do not use remote debugging features, so use this if you prefer better security against potential remote attacks over the ability to use remote debugging features; default = false
 user_pref("dom.disable_window_move_resize", true); // prevent websites from moving or resizing the browser window, which can be used for malicious purposes such as clickjacking or creating fake login screens; this will improve security by preventing websites from manipulating the browser window in ways that can trick users into performing unintended actions, but it may also break functionality on some sites that rely on window manipulation for legitimate purposes, so use this if you prefer better security over potential website functionality issues
 user_pref("dom.security.https_only_mode_send_http_background_request", false); // disable automatic background HTTP requests for HTTPS-Only Mode to prevent potential information leakage about user browsing patterns
 user_pref("security.cert_pinning.enforcement_level", 2); // enforce strict cert pinning checks for stronger MITM resistance
 // user_pref("security.OCSP.enabled", 1); // enable OCSP fetching for stricter certificate revocation checks
 // user_pref("security.OCSP.require", true); // hard-fail OCSP fetch failures when OCSP checks are enabled
-user_pref("security.pki.crlite_mode", 2); // enforce both revoked and not-revoked CRLite results
+// user_pref("security.pki.crlite_mode", 2); // enforce both revoked and not-revoked CRLite results; default = 2
 user_pref("security.remote_settings.crlite_filters.enabled", true); // keep CRLite revocation filters enabled
 user_pref("security.ssl.require_safe_negotiation", true); // require safe TLS renegotiation to block legacy downgrade paths
 // security.tls.version.min possible values:
@@ -349,7 +349,7 @@ user_pref("security.ssl.require_safe_negotiation", true); // require safe TLS re
 // 2 = TLS 1.1
 // 3 = TLS 1.2
 // 4 = TLS 1.3
-user_pref("security.tls.version.min", 3); // set the minimum TLS version to enforce the lowest allowed protocol; TLS 1.2 is still widely supported and considered secure, while TLS 1.0 and 1.1 are deprecated and have known vulnerabilities, so setting this to 3 will block those older protocols while maintaining compatibility with most modern websites; if you want to enforce TLS 1.3 only, you can set this to 4, but be aware that it may cause connectivity issues with sites that do not yet support TLS 1.3, so use this if you prefer stronger security over potential connectivity problems
+// user_pref("security.tls.version.min", 3); // set the minimum TLS version to enforce the lowest allowed protocol; TLS 1.2 is still widely supported and considered secure, while TLS 1.0 and 1.1 are deprecated and have known vulnerabilities, so setting this to 3 will block those older protocols while maintaining compatibility with most modern websites; if you want to enforce TLS 1.3 only, you can set this to 4, but be aware that it may cause connectivity issues with sites that do not yet support TLS 1.3, so use this if you prefer stronger security over potential connectivity problems; default = 3 
 user_pref("signon.autofillForms", false); // disable automatic credential autofill on page load
 
 /** SESSION ***/
@@ -384,12 +384,12 @@ user_pref("beacon.enabled", false); // disable the Beacon API to prevent website
 user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disables Search Engine Results Page telemetry categorization
 user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false); // disable telemetry ping for Firefox Accounts
 // Possible values for network.trr.mode:
-// 0  — off (OS resolver only)
+// 0  — default off (OS resolver only)
 // 1  — race (TRR vs OS, fastest wins)
 // 2  — first (TRR preferred, OS fallback)
 // 3  — TRR only, no OS fallback
-// 5  — off + disables ECS stripping
-// user_pref("network.trr.mode", 3); // enable Trusted Recursive Resolver (DNS over HTTPS) for better privacy; if you experience connectivity issues, you can set this to 3 to use DoH only as a fallback, or set it back to 0 to use OS DNS resolver only (my advice is to use Quad9/NextDNS/AdGuard/Mullvad or any reputable DNS in your OS network settings with DoH and set this user_pref to 0)
+// 5  — off by choice (identical to 0, but explicitly selected by the user)
+// user_pref("network.trr.mode", 5); // DoH disabled by choice (5 = off), Firefox uses the OS resolver; pair with a DoH-capable DNS in your OS settings (Quad9/NextDNS/AdGuard/Mullvad); to run DoH inside Firefox instead, set this to 2 (fallback to OS) or 3 (strict) and set/uncomment network.trr.uri below
 // user_pref("network.trr.uri", "https://dns.quad9.net/dns-query"); // enable this as well if you set network.trr.mode to 3; you can change this to another DoH provider if you prefer, but make sure to use a reputable one that supports DNSSEC and has a good privacy policy (I would avoid Google and Cloudeflare due to privacy concerns, but Quad9, NextDNS, AdGuard and Mullvad are good options)
 user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
 user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable telemetry for Nimbus experiments
