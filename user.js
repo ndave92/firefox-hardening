@@ -19,7 +19,7 @@
 ****************************************************************************/
 /** GENERAL ***/
 user_pref("gfx.content.skia-font-cache-size", 20);
-// user_pref("content.notify.interval", 100000); // default = 120000
+user_pref("content.notify.interval", 100000);
 
 /** GFX ***/
 user_pref("gfx.canvas.accelerated.cache-size", 512);
