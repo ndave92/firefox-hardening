@@ -291,6 +291,14 @@ user_pref("network.connectivity-service.enabled", false); // disable connectivit
 user_pref("network.dns.echconfig.enabled", true); // enable ECH (Encrypted Client Hello) configuration for DNS over HTTPS; should be enabled by default
 user_pref("network.file.disable_unc_paths", true); // block UNC path handling to reduce Windows network-share exposure
 user_pref("network.http.http3.use_nspr_for_io", false); // switches Firefox's QUIC stack to use the Rust-based IO path instead of NSPR; may improve performance on some systems
+// Possible values for network.trr.mode:
+// 0  — default off (OS resolver only)
+// 1  — race (TRR vs OS, fastest wins)
+// 2  — first (TRR preferred, OS fallback)
+// 3  — TRR only, no OS fallback
+// 5  — off by choice (identical to 0, but explicitly selected by the user)
+// user_pref("network.trr.mode", 5); // DoH disabled by choice (5 = off), Firefox uses the OS resolver; pair with a DoH-capable DNS in your OS settings (Quad9/NextDNS/AdGuard/Mullvad); to run DoH inside Firefox instead, set this to 2 (fallback to OS) or 3 (strict) and set/uncomment network.trr.uri below
+// user_pref("network.trr.uri", "https://dns.quad9.net/dns-query"); // enable this as well if you set network.trr.mode to 3; you can change this to another DoH provider if you prefer, but make sure to use a reputable one that supports DNSSEC and has a good privacy policy (I would avoid Google and Cloudeflare due to privacy concerns, but Quad9, NextDNS, AdGuard and Mullvad are good options)
 
 /** PERMISSIONS ***/
 // Possible values for all permissions.default.* preferences: 
@@ -383,14 +391,6 @@ user_pref("browser.tabs.searchclipboardfor.middleclick", false); // prevent acci
 user_pref("beacon.enabled", false); // disable the Beacon API to prevent websites from sending asynchronous analytics data that can be used for tracking 
 user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disables Search Engine Results Page telemetry categorization
 user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false); // disable telemetry ping for Firefox Accounts
-// Possible values for network.trr.mode:
-// 0  — default off (OS resolver only)
-// 1  — race (TRR vs OS, fastest wins)
-// 2  — first (TRR preferred, OS fallback)
-// 3  — TRR only, no OS fallback
-// 5  — off by choice (identical to 0, but explicitly selected by the user)
-// user_pref("network.trr.mode", 5); // DoH disabled by choice (5 = off), Firefox uses the OS resolver; pair with a DoH-capable DNS in your OS settings (Quad9/NextDNS/AdGuard/Mullvad); to run DoH inside Firefox instead, set this to 2 (fallback to OS) or 3 (strict) and set/uncomment network.trr.uri below
-// user_pref("network.trr.uri", "https://dns.quad9.net/dns-query"); // enable this as well if you set network.trr.mode to 3; you can change this to another DoH provider if you prefer, but make sure to use a reputable one that supports DNSSEC and has a good privacy policy (I would avoid Google and Cloudeflare due to privacy concerns, but Quad9, NextDNS, AdGuard and Mullvad are good options)
 user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
 user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable telemetry for Nimbus experiments
 user_pref("toolkit.telemetry.reportingpolicy.firstRun", false); // disable telemetry reporting policy first run ping
