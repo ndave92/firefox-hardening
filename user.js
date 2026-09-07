@@ -10,7 +10,7 @@
 /****************************************************************************
  * Betterfox                                                                *
  * "Ad meliora"                                                             *
- * version: 152                                                             *
+ * version: 154                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
 ****************************************************************************/
 
@@ -23,9 +23,6 @@ user_pref("content.notify.interval", 100000);
 
 /** GFX ***/
 user_pref("gfx.canvas.accelerated.cache-size", 512);
-
-/** JS ***/
-user_pref("javascript.options.baselinejit.threshold", 50);
 
 /** MEDIA CACHE ***/
 user_pref("media.cache_readahead_limit", 3600);
@@ -70,7 +67,6 @@ user_pref("browser.sessionstore.interval", 60000);
 
 /** SHUTDOWN & SANITIZING ***/
 user_pref("privacy.history.custom", true);
-user_pref("browser.privatebrowsing.resetPBM.enabled", true);
 
 /** SPECULATIVE LOADING ***/
 user_pref("network.http.speculative-parallel-limit", 0);
@@ -105,9 +101,6 @@ user_pref("extensions.enabledScopes", 5);
 
 /** HEADERS / REFERERS ***/
 user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
-
-/** CONTAINERS ***/
-user_pref("privacy.userContext.ui.enabled", true);
 
 /** VARIOUS ***/
 user_pref("pdfjs.enableScripting", false);
@@ -146,10 +139,12 @@ user_pref("datareporting.usage.uploadEnabled", false);
 user_pref("app.shield.optoutstudies.enabled", false);
 user_pref("app.normandy.enabled", false);
 user_pref("app.normandy.api_url", "");
+user_pref("nimbus.rollouts.enabled", false);
 
 /** CRASH REPORTS ***/
 user_pref("breakpad.reportURL", "");
 user_pref("browser.tabs.crashReporting.sendReport", false);
+user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
 
 /****************************************************************************
  * SECTION: PESKYFOX                                                        *
@@ -203,9 +198,7 @@ user_pref("browser.download.open_pdf_attachments_inline", true);
 
 /** TAB BEHAVIOR ***/
 user_pref("browser.bookmarks.openInTabClosesMenu", false);
-user_pref("browser.menu.showViewImageInfo", true);
 user_pref("findbar.highlightAll", true);
-user_pref("layout.word_select.eat_space_to_next_word", false);
 
 /****************************************************************************
  * START: MY OVERRIDES (grouped by categories A-Z ascending order)
@@ -240,9 +233,6 @@ user_pref("places.semanticHistory.featureGate", false); // disable AI-powered se
 user_pref("widget.non-native-theme.use-theme-accent", false); // disable using the system accent color in non-native themes to reduce color-based fingerprinting; this will prevent websites from being able to detect your system accent color, which can be used as part of a fingerprinting profile, but it may also make your browser's appearance less integrated with your operating system's theme, so use this if you prefer better fingerprinting resistance over visual integration with your OS theme
 // user_pref("widget.windows.uwp-system-colors.highlight-accent", false); // disable using UWP system colors for highlight accent in Windows; false by default, but you can enable this to match you Windows accent color in the browser's highlight styles, which may improve visual integration with your Windows theme but could also allow websites to detect your accent color for fingerprinting purposes in some cases
 
-/** CONTAINERS ***/
-user_pref("privacy.userContext.enabled", true); // enable Containers backend (UI toggle is already enabled above)
-
 /** DOWNLOADS ***/
 user_pref("browser.download.always_ask_before_handling_new_types", true); // always ask how to handle new MIME types
 // user_pref("browser.download.alwaysOpenPanel", false); // keep the download panel from opening on every download
@@ -260,6 +250,7 @@ user_pref("extensions.postDownloadThirdPartyPrompt", false); // arkenfox 2661: "
 // user_pref("media.wmf.zero-copy-nv12-textures-force-enabled", true); // enables zero-copy NV12 textures to improve CPU usage on AMD GPU systems; you might want to enable this if you have an AMD graphics card
 
 /** MOZILLA UI ***/
+user_pref("browser.menu.showViewImageInfo", true); // show legacy "View Image Info" in the context menu for images (optional tweak)
 // user_pref("browser.newtabpage.activity-stream.system.showWeather", true); // show weather on new tab page; optional QoL feature, you can enable it if you like having weather info on the new tab page, but be aware that it may cause additional network requests and potential information leakage about your location; if you enable this, you can further customize the weather display with the following preference:
 // user_pref("browser.newtabpage.activity-stream.weather.display", "detailed"); // use detailed weather info; use "simple" for just temperature
 user_pref("browser.tabs.splitView.enabled", true); // enable split view; might be enabled by default from v149, but you can disable it if you dislike it
@@ -386,6 +377,7 @@ user_pref("browser.sessionstore.privacy_level", 2); // avoid storing extra form 
 user_pref("browser.link.open_newwindow", 3); // open new windows in a new tab instead; this will make all links that would normally open in a new window (e.g. target="_blank") open in a new tab instead, which can help keep your browsing organized and prevent unwanted pop-up windows
 user_pref("browser.link.open_newwindow.restriction", 0); // apply the tab-open rule to all window.open methods
 user_pref("browser.tabs.searchclipboardfor.middleclick", false); // prevent accidental clipboard search/open on middle-click new-tab
+user_pref("layout.word_select.eat_space_to_next_word", false); // stops space capture on word double-click (optional tweak)
 
 /** TELEMETRY ***/
 user_pref("beacon.enabled", false); // disable the Beacon API to prevent websites from sending asynchronous analytics data that can be used for tracking 
