@@ -247,7 +247,8 @@ user_pref("extensions.postDownloadThirdPartyPrompt", false); // arkenfox 2661: "
 // user_pref("geo.provider.use_geoclue", false); // disable Linux geolocation provider; this will prevent Firefox from using the Geoclue service to determine your location on Linux
 
 /** MEDIA ***/
-// user_pref("media.wmf.zero-copy-nv12-textures-force-enabled", true); // enables zero-copy NV12 textures to improve CPU usage on AMD GPU systems; you might want to enable this if you have an AMD graphics card
+// user_pref("media.wmf.zero-copy-nv12-textures-force-enabled", true); // enables zero-copy NV12 textures to improve CPU usage on Windows systems; you might want to enable this if you have an AMD graphics card; also don't enable this if you are using Firefox on Linux or macOS, since wmf stands for Windows Media Foundation, which is a Windows-specific multimedia framework, and systems with unified RAM and VRAM won't benefit from this anyway
+// user_pref("media.av1.enabled", false); // disables AV1 video codec support; this setting is targeting older Apple Macbooks and machines without dedicated AV1 hardware decoders; Macbooks support AV1 hardware decoding from M3 chips onward, so if you have an older Macbook, you may want to disable this to avoid performance issues, e.g. without dedicated hardware accelerated AV1 decoding, it falls back to software decoding (via dav1d), which can be CPU-intensive and may cause high CPU usage and battery drain; if you have a newer Macbook with M3 or later, you can leave this enabled to take advantage of hardware acceleration for AV1 video playback
 
 /** MOZILLA UI ***/
 user_pref("browser.menu.showViewImageInfo", true); // show legacy "View Image Info" in the context menu for images (optional tweak)
