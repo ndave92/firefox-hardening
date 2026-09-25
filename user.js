@@ -381,7 +381,7 @@ user_pref("browser.tabs.searchclipboardfor.middleclick", false); // prevent acci
 user_pref("layout.word_select.eat_space_to_next_word", false); // stops space capture on word double-click (optional tweak)
 
 /** TELEMETRY ***/
-user_pref("beacon.enabled", false); // disable the Beacon API to prevent websites from sending asynchronous analytics data that can be used for tracking 
+user_pref("beacon.enabled", false); // disable the Beacon API to prevent websites from sending asynchronous analytics data that can be used for tracking; add a custom uBlock filter to prevent breakage on sites that use sendBeacon for legitimate purposes: *##+js(set-constant, navigator.sendBeacon, trueFunc)
 user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disables Search Engine Results Page telemetry categorization
 user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false); // disable telemetry ping for Firefox Accounts
 user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
