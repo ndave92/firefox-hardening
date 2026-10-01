@@ -254,8 +254,10 @@ user_pref("extensions.postDownloadThirdPartyPrompt", false); // arkenfox 2661: "
 user_pref("browser.menu.showViewImageInfo", true); // show legacy "View Image Info" in the context menu for images (optional tweak)
 // user_pref("browser.newtabpage.activity-stream.system.showWeather", true); // show weather on new tab page; optional QoL feature, you can enable it if you like having weather info on the new tab page, but be aware that it may cause additional network requests and potential information leakage about your location; if you enable this, you can further customize the weather display with the following preference:
 // user_pref("browser.newtabpage.activity-stream.weather.display", "detailed"); // use detailed weather info; use "simple" for just temperature
+// user_pref("browser.nova.enabled", false); // toggle the new Nova UI; this is mainly for those who doesn't like the new Nova UI and want to keep the classic Firefox interface; might be removed in future versions of Firefox
 user_pref("browser.tabs.splitView.enabled", true); // enable split view; might be enabled by default from v149, but you can disable it if you dislike it
 user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // remove Mozilla promo from account menu
+// user_pref("pdfjs.enableNova", false); // disable Nova UI design for the PDF viewer
 user_pref("sidebar.revamp", true); // enable new sidebar revamp UI; might be enabled by default from v149, but you can disable it if you dislike it
 user_pref("sidebar.revamp.round-content-area", true); // enable rounded sidebar content area corner; you can disable it if you dislike it
 
