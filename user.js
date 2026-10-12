@@ -208,193 +208,192 @@ user_pref("findbar.highlightAll", true);
 // Enter your personal overrides below this line:
 
 /** AI ***/
-user_pref("browser.ml.chat.shortcuts", false); // disable AI chat shortcuts
-user_pref("browser.ml.chat.shortcuts.custom", false); // disable AI chat shortcuts
-user_pref("browser.ml.pageAssist.enabled", false); // disable AI-powered page assistance
-user_pref("browser.ml.smartAssist.enabled", false); // disable AI-powered smart assistance
-user_pref("browser.tabs.groups.smart.userEnabled", false); // disable tab groups based on AI
-user_pref("browser.translations.automaticallyPopup", false); // disable translation popup
-user_pref("browser.translations.enable", false); // disable built-in translation (uses Neural Machine Translation - AI)
-user_pref("browser.urlbar.quicksuggest.mlEnabled", false); // disable AI-powered suggestions in URL bar
-user_pref("extensions.ml.enabled", false); // disable extension recommendations based on AI
-user_pref("pdfjs.enableAltText", false); // disable PDF alt text (AI-generated descriptions)
-user_pref("pdfjs.enableAltTextForEnglish", false); // disable PDF alt text for English language
-user_pref("pdfjs.enableAltTextModelDownload", false); // disable PDF alt text model download
-user_pref("places.semanticHistory.featureGate", false); // disable AI-powered semantic history
+user_pref("browser.ml.chat.shortcuts", false); // hide the AI chatbot shortcut shown on text selection; default = true
+user_pref("browser.ml.chat.shortcuts.custom", false); // hide custom prompts in the AI chatbot shortcut menu; default = true
+user_pref("browser.ml.pageAssist.enabled", false); // disable AI page assist; default = false
+user_pref("browser.smartwindow.enabled", false); // disable Smart Window (AI browsing window); default = false
+user_pref("browser.tabs.groups.smart.userEnabled", false); // disable AI tab group suggestions (on-device model); default = true
+user_pref("browser.translations.automaticallyPopup", false); // don't offer translation automatically on foreign-language pages; default = true
+user_pref("browser.translations.enable", false); // disable Firefox Translations (on-device Bergamot ML models, page text is not sent to Mozilla); default = true
+user_pref("browser.urlbar.quicksuggest.mlEnabled", false); // disable the ML backend for Firefox Suggest; default = false
+user_pref("extensions.ml.enabled", false); // disable the experimental ML inference API for extensions; the AI controls toggle in Settings sets this, browser.ai.control.default in user.js does not; default = true
+// user_pref("pdfjs.enableAltText", false); // disable the PDF editor's alt text feature, including the manual alt text editor, and never load the ML manager; default = true
+user_pref("pdfjs.enableAltTextModelDownload", false); // don't download the on-device alt text model for the PDF editor; default = false
+user_pref("pdfjs.enableGuessAltText", false); // disable AI-generated alt text suggestions for images added in the PDF editor; default = false
+user_pref("places.semanticHistory.featureGate", false); // disable AI semantic history search; default = false (true on Nightly, early Beta and Developer Edition)
 
 /** ANTI-FINGERPRINTING ***/
-// user_pref("privacy.resistFingerprinting", true); // enable built-in anti-fingerprinting features; read this before enabling: https://support.mozilla.org/en-US/kb/resist-fingerprinting
-// user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // block extension list access from web content for better fingerprinting resistance; Mozilla lists it as RFP-gated (enabled only when privacy.resistFingerprinting is enabled)
-// user_pref("privacy.resistFingerprinting.letterboxing", true); // enable letterboxing to add opaque padding around the content area so the reported inner window dimensions are always a multiple of 200×100px, preventing viewport-based fingerprinting
-// user_pref("privacy.resistFingerprinting.pbmode", true); // enable built-in anti-fingerprinting features in private browsing mode ONLY
-// user_pref("privacy.spoof_english", 1); // spoof English locale to reduce language-based fingerprinting; this will make your browser report as English (United States) to websites, which can help reduce the uniqueness of your browser fingerprint if you are not actually using an English locale; however, it may cause some websites to display content in English instead of your native language, so use this if you prefer better fingerprinting resistance over localized content
-// user_pref("privacy.window.maxInnerWidth", 1900); // limit inner window width to reduce screen-size fingerprinting; this will make your browser report a maximum inner window width of 1900 pixels, which can help reduce the uniqueness of your browser fingerprint based on screen size, but it may also cause layout issues on some websites that are designed for wider screens, so use this if you prefer better fingerprinting resistance over potential website layout problems; if you have a very wide monitor (e.g. 4K) and want to set this higher, you can adjust the value to your liking, but setting it too high may reduce the effectiveness of this anti-fingerprinting measure, while setting it too low may cause more layout issues, so find a balance that works for you
-// user_pref("privacy.window.maxInnerHeight", 1000); // limit inner window height to reduce screen-size fingerprinting; this will make your browser report a maximum inner window height of 1000 pixels, which can help reduce the uniqueness of your browser fingerprint based on screen size, but it may also cause layout issues on some websites that are designed for taller screens, so use this if you prefer better fingerprinting resistance over potential website layout problems; if you have a very tall monitor and want to set this higher, you can adjust the value to your liking, but setting it too high may reduce the effectiveness of this anti-fingerprinting measure, while setting it too low may cause more layout issues, so find a balance that works for you
-user_pref("widget.non-native-theme.use-theme-accent", false); // disable using the system accent color in non-native themes to reduce color-based fingerprinting; this will prevent websites from being able to detect your system accent color, which can be used as part of a fingerprinting profile, but it may also make your browser's appearance less integrated with your operating system's theme, so use this if you prefer better fingerprinting resistance over visual integration with your OS theme
-// user_pref("widget.windows.uwp-system-colors.highlight-accent", false); // disable using UWP system colors for highlight accent in Windows; false by default, but you can enable this to match you Windows accent color in the browser's highlight styles, which may improve visual integration with your Windows theme but could also allow websites to detect your accent color for fingerprinting purposes in some cases
+// user_pref("privacy.resistFingerprinting", true); // enable Resist Fingerprinting (RFP) in all windows; breaks some sites, read first: https://support.mozilla.org/kb/resist-fingerprinting; default = false
+// user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // hide the mozAddonManager API from addons.mozilla.org; works without RFP; default = false
+// user_pref("privacy.resistFingerprinting.letterboxing", true); // RFP letterboxing: pad the content area so its size snaps to steps (50 px up to 500 px, 200x100 px up to 1600 px, 200 px above); requires RFP; default = false
+// user_pref("privacy.resistFingerprinting.pbmode", true); // enable RFP in private windows only; default = false
+// user_pref("privacy.spoof_english", 2); // RFP: request English pages and report an en-US locale; may show English instead of your language (0 = ask, 1 = don't spoof, 2 = spoof); default = 0
+// user_pref("privacy.window.maxInnerWidth", 1900); // RFP: maximum inner width of newly opened windows; ignored without RFP; default = 1400
+// user_pref("privacy.window.maxInnerHeight", 1000); // RFP: maximum inner height of newly opened windows; ignored without RFP; default = 900
+user_pref("widget.non-native-theme.use-theme-accent", false); // use Firefox's accent color instead of the OS accent for form controls and CSS AccentColor, so sites can't read it; default = false on Windows, true on macOS and Linux
+// user_pref("widget.windows.uwp-system-colors.highlight-accent", true); // use the Windows accent color for the selection highlight; exposes it to sites through CSS system colors; Windows only; default = false
 
 /** DOWNLOADS ***/
-user_pref("browser.download.always_ask_before_handling_new_types", true); // always ask how to handle new MIME types
-// user_pref("browser.download.alwaysOpenPanel", false); // keep the download panel from opening on every download
-// user_pref("browser.download.useDownloadDir", false); // always ask where to save downloads for safer file handling
-user_pref("browser.helperApps.deleteTempFileOnExit", true); // delete helper-app temp files when Firefox exits
-user_pref("extensions.postDownloadThirdPartyPrompt", false); // arkenfox 2661: "disable bypassing 3rd party extension install prompts"
+user_pref("browser.download.always_ask_before_handling_new_types", true); // ask what to do with file types Firefox hasn't handled before; default = false
+// user_pref("browser.download.alwaysOpenPanel", false); // don't open the downloads panel when a download starts; default = true
+// user_pref("browser.download.useDownloadDir", false); // ask where to save every download; default = true
+user_pref("browser.helperApps.deleteTempFileOnExit", true); // delete temp files of downloads opened with helper apps when Firefox exits; default = true (false on macOS)
+user_pref("extensions.postDownloadThirdPartyPrompt", false); // check the site's add-on install permission before the add-on is downloaded, not after (arkenfox 2661); default = true
 
 /** GEOLOCATION ***/
-// user_pref("geo.enabled", false); // disable geolocation API entirely; this will prevent all websites from being able to access your location through the browser, but it may also break functionality on some sites that rely on geolocation for features like maps, local search results, or location-based content, so use this if you prefer maximum privacy over potential website functionality issues
-// user_pref("geo.provider.ms-windows-location", false); // disable Windows geolocation provider; this will prevent Firefox from using the Windows location service to determine your location
-// user_pref("geo.provider.use_corelocation", false); // disable macOS Core Location geolocation provider
-// user_pref("geo.provider.use_geoclue", false); // disable Linux geolocation provider; this will prevent Firefox from using the Geoclue service to determine your location on Linux
+// user_pref("geo.enabled", false); // disable the Geolocation API entirely; breaks maps and location features; default = true
+// user_pref("geo.provider.ms-windows-location", false); // don't use the Windows location service; Windows only; default = true
+// user_pref("geo.provider.use_corelocation", false); // don't use the macOS Core Location service; macOS only; default = true
+// user_pref("geo.provider.use_geoclue", false); // don't use the GeoClue location service; Linux only; default = true
 
 /** MEDIA ***/
-// user_pref("media.wmf.zero-copy-nv12-textures-force-enabled", true); // enables zero-copy NV12 textures to improve CPU usage on Windows systems; you might want to enable this if you have an AMD graphics card; also don't enable this if you are using Firefox on Linux or macOS, since wmf stands for Windows Media Foundation, which is a Windows-specific multimedia framework, and systems with unified RAM and VRAM won't benefit from this anyway
-// user_pref("media.av1.enabled", false); // disables AV1 video codec support; this setting is targeting older Apple Macbooks and machines without dedicated AV1 hardware decoders; Macbooks support AV1 hardware decoding from M3 chips onward, so if you have an older Macbook, you may want to disable this to avoid performance issues, e.g. without dedicated hardware accelerated AV1 decoding, it falls back to software decoding (via dav1d), which can be CPU-intensive and may cause high CPU usage and battery drain; if you have a newer Macbook with M3 or later, you can leave this enabled to take advantage of hardware acceleration for AV1 video playback
+// user_pref("media.wmf.zero-copy-nv12-textures-force-enabled", true); // force zero-copy hardware video decoding even on GPUs and drivers Mozilla has blocked for it; can lower CPU use but risks glitches or crashes; Windows only; default = false
+// user_pref("media.av1.enabled", false); // disable AV1 on hardware without AV1 decoding (e.g. Apple Silicon before M3), where software decoding (dav1d) costs CPU and battery; sites fall back to VP9 or H.264; default = true
 
 /** MOZILLA UI ***/
-user_pref("browser.menu.showViewImageInfo", true); // show legacy "View Image Info" in the context menu for images (optional tweak)
-// user_pref("browser.newtabpage.activity-stream.system.showWeather", true); // show weather on new tab page; optional QoL feature, you can enable it if you like having weather info on the new tab page, but be aware that it may cause additional network requests and potential information leakage about your location; if you enable this, you can further customize the weather display with the following preference:
-// user_pref("browser.newtabpage.activity-stream.weather.display", "detailed"); // use detailed weather info; use "simple" for just temperature
-// user_pref("browser.nova.enabled", false); // toggle the new Nova UI; this is mainly for those who doesn't like the new Nova UI and want to keep the classic Firefox interface; might be removed in future versions of Firefox
-user_pref("browser.tabs.splitView.enabled", true); // enable split view; might be enabled by default from v149, but you can disable it if you dislike it
-user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // remove Mozilla promo from account menu
-// user_pref("pdfjs.enableNova", false); // disable Nova UI design for the PDF viewer
-user_pref("sidebar.revamp", true); // enable new sidebar revamp UI; might be enabled by default from v149, but you can disable it if you dislike it
-user_pref("sidebar.revamp.round-content-area", true); // enable rounded sidebar content area corner; you can disable it if you dislike it
+user_pref("browser.menu.showViewImageInfo", true); // show "View Image Info" in the image context menu; default = false (true on Developer Edition)
+// user_pref("browser.newtabpage.activity-stream.system.showWeather", true); // force the New Tab weather widget on where Mozilla hasn't enabled it for your region; it fetches weather for your approximate location; default = set by region
+// user_pref("browser.newtabpage.activity-stream.weather.display", "simple"); // weather widget style: "simple" (temperature only) or "detailed"; default = "detailed"
+// user_pref("browser.nova.enabled", false); // use the classic Firefox UI instead of the Nova redesign; default = true
+user_pref("browser.tabs.splitView.enabled", true); // enable split view; default = true
+user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // hide Mozilla product promos in the account menu; default = true
+// user_pref("pdfjs.enableNova", false); // use the classic PDF viewer UI; Nova only applies while browser.nova.enabled is also true; default = true
+user_pref("sidebar.revamp", true); // enable the new sidebar; default = true
 
-// Possible values for widget.non-native-theme.scrollbar.style:
-// 0 = Default (System theme)
-// 1 = macOS (Rounded pill, usually overlay)
-// 2 = GTK (Linux style, square edges)
-// 3 = Android (Mobile style, very thin)
-// 4 = Windows 10 (Traditional, boxy, wider)
-// 5 = Windows 11 (Modern, rounded corners)
-// user_pref("widget.non-native-theme.scrollbar.style", 0); // set custom scrollbar style
+// widget.non-native-theme.scrollbar.style values (non-default styles are experimental):
+// 0 = default platform style
+// 1 = macOS
+// 2 = GTK
+// 3 = Android
+// 4 = Windows 10
+// 5 = Windows 11
+// user_pref("widget.non-native-theme.scrollbar.style", 0); // scrollbar style; default = 0
 
-// Only affects scrollbars if widget.non-native-theme.scrollbar.style = 5 (or if Windows 11 style is the default (= 0) for your system)
-// true = Scrollbar floats over content, is thinner, and expands on hover
-// false = Scrollbar takes up space (layout shifts) and is always persistent
-// user_pref("widget.non-native-theme.win11.scrollbar.force-overlay-style", true);
+// user_pref("widget.non-native-theme.win11.scrollbar.force-overlay-style", true); // always draw Windows 11 scrollbars in the thin overlay style that expands on hover; only affects Windows 11 style scrollbars; default = false
 
 /** NETWORK ***/
-user_pref("captivedetect.canonicalURL", ""); // clear captive portal probe endpoint for extra outbound reduction
-user_pref("media.peerconnection.ice.default_address_only", true); // WebRTC only use default route; might cause issues with VPNs or network interfaces, so disable if you have connectivity problems with WebRTC-based applications (e.g. video calls); this is a privacy improvement that prevents WebRTC from leaking local IP addresses, but it may cause connectivity issues in some network configurations, so use this if you prefer better privacy over potential connectivity problems
-// user_pref("media.peerconnection.ice.no_host", true); // disable WebRTC from gathering local IP addresses; this is a stronger privacy improvement that prevents WebRTC from gathering any local IP addresses, but it may cause connectivity issues in some network configurations, especially if you are behind a NAT or using a VPN, so use this if you prefer maximum privacy over potential connectivity problems
-user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true); // keep WebRTC proxy-aware when a proxy is configured
-user_pref("network.captive-portal-service.enabled", false); // captive portal detection at detectportal.firefox.com makes a plain HTTP request even with DoH enabled, this reveals network presence
-user_pref("network.connectivity-service.enabled", false); // disable connectivity checks that contact Mozilla endpoints
-user_pref("network.dns.echconfig.enabled", true); // enable ECH (Encrypted Client Hello) configuration for DNS over HTTPS; should be enabled by default
-user_pref("network.file.disable_unc_paths", true); // block UNC path handling to reduce Windows network-share exposure
-user_pref("network.http.http3.use_nspr_for_io", false); // switches Firefox's QUIC stack to use the Rust-based IO path instead of NSPR; may improve performance on some systems
-// Possible values for network.trr.mode:
-// 0  — default off (OS resolver only)
-// 1  — race (TRR vs OS, fastest wins)
-// 2  — first (TRR preferred, OS fallback)
-// 3  — TRR only, no OS fallback
-// 5  — off by choice (identical to 0, but explicitly selected by the user)
-// user_pref("network.trr.mode", 5); // DoH disabled by choice (5 = off), Firefox uses the OS resolver; pair with a DoH-capable DNS in your OS settings (Quad9/NextDNS/AdGuard/Mullvad); to run DoH inside Firefox instead, set this to 2 (fallback to OS) or 3 (strict) and set/uncomment network.trr.uri below
-// user_pref("network.trr.uri", "https://dns.quad9.net/dns-query"); // enable this as well if you set network.trr.mode to 3; you can change this to another DoH provider if you prefer, but make sure to use a reputable one that supports DNSSEC and has a good privacy policy (I would avoid Google and Cloudeflare due to privacy concerns, but Quad9, NextDNS, AdGuard and Mullvad are good options)
+user_pref("captivedetect.canonicalURL", ""); // clear the captive portal probe URL; redundant while network.captive-portal-service.enabled is false; default = "http://firefox-portal-detection.com/generate_204"
+user_pref("media.peerconnection.ice.default_address_only", true); // WebRTC: gather candidates only from the default route interface, so other interfaces (e.g. outside a VPN) aren't exposed; may break some calls; default = false
+// user_pref("media.peerconnection.ice.no_host", true); // WebRTC: gather no host candidates at all; stronger, but breaks more calls; default = false
+user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true); // WebRTC: send all traffic through the proxy when one is configured; default = false
+user_pref("network.captive-portal-service.enabled", false); // disable captive portal detection (plain HTTP requests to firefox-portal-detection.com); hotel and airport Wi-Fi login pages are no longer detected, open an http:// site manually; default = true
+user_pref("network.connectivity-service.enabled", false); // disable connectivity checks (plain HTTP requests to firefox-portal-detection.com); default = true
+user_pref("network.dns.echconfig.enabled", true); // use Encrypted Client Hello when a site's DNS HTTPS record offers it; works with DoH or the OS resolver; default = true
+user_pref("network.file.disable_unc_paths", true); // block UNC network paths (\\server\share) in file:// URLs; Windows only; default = false
+user_pref("network.http.http3.use_nspr_for_io", false); // HTTP/3: use the Rust UDP I/O path instead of NSPR; default = false
+
+// network.trr.mode values:
+// 0 = off (default)
+// 1 = reserved (off)
+// 2 = DoH first, OS resolver as fallback
+// 3 = DoH only, no fallback
+// 4 = reserved (off)
+// 5 = off by choice
+// user_pref("network.trr.mode", 5); // DoH off by choice, Firefox uses the OS resolver; set up encrypted DNS in the OS instead (e.g. Quad9, NextDNS, AdGuard, Mullvad); for DoH in Firefox use 2 or 3 with network.trr.uri; default = 0
+// user_pref("network.trr.uri", "https://dns.quad9.net/dns-query"); // DoH resolver for modes 2 and 3; when empty Firefox uses network.trr.default_provider_uri (Cloudflare); default = ""
 
 /** PERMISSIONS ***/
-// Possible values for all permissions.default.* preferences: 
+// permissions.default.* values:
 // 0 = always ask
-// 1 = always allow
-// 2 = block;
-// user_pref("permissions.default.camera", 0); // set default camera permission to "always ask" for better privacy; default = 0
-// user_pref("permissions.default.image", 1); // allow images by default; you can set this to 2 to block all images, but be aware that it will break the layout and functionality of many websites, so use this if you prefer stronger privacy against image-based tracking over website usability; default = 1
-// user_pref("permissions.default.local-network", 0); // set local network permission to "always ask" to prevent potential abuse of local network access by websites; this will prompt you for permission whenever a website tries to access devices on your local network, which can help protect against certain types of attacks that try to exploit vulnerabilities in local network devices; default = 0
-// user_pref("permissions.default.loopback-network", 0); // set loopback network permission to "always ask" to prevent potential abuse of loopback network access by websites; this will prompt you for permission whenever a website tries to access services running on your own machine, which can help protect against certain types of attacks that try to exploit vulnerabilities in local services; default = 0
-// user_pref("permissions.default.microphone", 0); // set default microphone permission to "always ask" for better privacy; default = 0
-// user_pref("permissions.default.screen-wake-lock", 1); // allow screen wake lock by default; this is a feature that allows websites to prevent your screen from dimming or locking while you are using them, which can be useful for certain applications like video players or online presentations; if you want to block this feature for all sites, you can set this to 2, but be aware that it may cause inconvenience on sites that use it for legitimate purposes, so use this if you prefer stronger privacy against potential abuse of wake locks over convenience; default = 1
-// user_pref("permissions.default.shortcuts", 0); // set default shortcuts permission to "always ask" to prevent potential abuse of keyboard shortcuts by websites; this will prompt you for permission whenever a website tries to register global keyboard shortcuts, which can help protect against malicious sites that try to hijack your keyboard input; default = 0
-user_pref("permissions.default.xr", 2); // block WebXR permission requests to prevent potential abuse of augmented reality and virtual reality features by websites; if you want to allow WebXR for specific sites, you can manage exceptions in the site permissions settings; default = 0
+// 1 = allow
+// 2 = block
+// user_pref("permissions.default.camera", 0); // ask before sites use the camera; default = 0
+// user_pref("permissions.default.image", 1); // load images; 2 blocks all images and breaks most sites; default = 1
+// user_pref("permissions.default.local-network", 0); // ask before sites connect to devices on your local network; default = 0
+// user_pref("permissions.default.loopback-network", 0); // ask before sites connect to services on this computer (localhost); default = 0
+// user_pref("permissions.default.microphone", 0); // ask before sites use the microphone; default = 0
+// user_pref("permissions.default.screen-wake-lock", 1); // allow sites to keep the screen awake (e.g. video, presentations); default = 1
+// user_pref("permissions.default.shortcuts", 0); // sites may override Firefox keyboard shortcuts; 2 blocks this (no "ask" option); default = 0
+user_pref("permissions.default.xr", 2); // block WebXR (VR/AR) requests; allow per site in site permissions; default = 0
 
 /** PRIVACY **/
-user_pref("device.sensors.enabled", false); // disable access to device sensors (accelerometer, gyroscope, magnetometer); this can help improve privacy by preventing websites from being able to access sensor data that can be used for tracking and fingerprinting purposes, but it may also break functionality on some sites that rely on sensor data for features like motion-based interactions or device orientation detection, so use this if you prefer better privacy over potential website functionality issues
-// you can fine-tune sensor access with the following more specific preferences if you want to allow certain sensors while blocking others, but setting device.sensors.enabled to false will override all of these and block all sensors regardless of the individual settings:
-// user_pref("device.sensors.ambientLight.enabled", false);
-// user_pref("device.sensors.motion.enabled", false);
-// user_pref("device.sensors.orientation.enabled", false);
-// user_pref("device.sensors.proximity.enabled", false);
-user_pref("dom.battery.enabled", false); // disable access to battery API; this will prevent websites from being able to detect your device's battery status, which can be used for tracking and fingerprinting purposes, but it may also break functionality on some sites that rely on battery information for features like power-saving modes or performance optimizations, so use this if you prefer better privacy over potential website functionality issues
-// user_pref("dom.event.clipboardevents.enabled", false); // disable clipboard events for better privacy; this will prevent websites from being able to detect when you copy, paste, or cut content, which can help protect against certain types of tracking and fingerprinting techniques that rely on clipboard event detection; however, it may also break functionality on some sites that use clipboard events for legitimate purposes, such as custom copy-paste behavior or rich text editing features, so use this if you prefer better privacy over potential website functionality issues
-// user_pref("dom.gamepad.enabled", false); // disable access to gamepad API; this can help improve privacy by preventing websites from being able to detect and track users based on their gamepad usage, but it may also break functionality on websites that rely on gamepad input (e.g. xbox), so use this if you prefer better privacy over potential website functionality issues
-// user_pref("privacy.trackingprotection.allow_list.baseline.enabled", true); // keep the built-in tracking protection allowlist enabled to prevent breakage on sites with known issues; this is a list of sites that are allowed to load certain tracking resources in order to prevent breakage of functionality on those sites, but it may also allow some tracking on those sites, so use this if you prefer better compatibility over maximum blocking of trackers; default = true
-// user_pref("privacy.trackingprotection.allow_list.convenience.enabled", true); // keep the built-in tracking protection allowlist for convenience features enabled to prevent breakage on sites with known issues; this is a list of sites that are allowed to load certain resources in order to prevent breakage of convenience features on those sites, but it may also allow some tracking on those sites, so use this if you prefer better compatibility over maximum blocking of trackers; ; default = true
+user_pref("device.sensors.enabled", false); // block all device sensor events (orientation, motion, light, proximity) for websites; overrides the per-sensor prefs below; default = true
+// per-sensor prefs, only used while device.sensors.enabled is true:
+// user_pref("device.sensors.ambientLight.enabled", false); // default = false
+// user_pref("device.sensors.motion.enabled", false); // default = true
+// user_pref("device.sensors.orientation.enabled", false); // default = true
+// user_pref("device.sensors.proximity.enabled", false); // default = false
+user_pref("dom.battery.enabled", false); // disable the Battery API; websites can't use navigator.getBattery() anyway (chrome-only), so this is defense in depth; default = true
+// user_pref("dom.event.clipboardevents.enabled", false); // stop sites from detecting or changing copy, cut and paste; breaks paste in web editors (e.g. Google Docs); default = true
+// user_pref("dom.gamepad.enabled", false); // disable the Gamepad API; breaks browser games and cloud gaming (e.g. Xbox Cloud Gaming); default = true
+// user_pref("privacy.trackingprotection.allow_list.baseline.enabled", true); // strict tracking protection: keep the exceptions that fix major site breakage; default = true
+// user_pref("privacy.trackingprotection.allow_list.convenience.enabled", true); // strict tracking protection: keep the exceptions that fix minor breakage, which may allow some trackers; default = true
 
 /** SEARCH & URL BAR ***/
-user_pref("browser.search.separatePrivateDefault", true); // enable a separate private-window default search engine
-// user_pref("browser.search.visualSearch.featureGate", true); // enable Google Lens image search (only works with Google default search); since firefox does not have "search by image" functionality built in, this is the closest alternative; be aware that it may cause additional network requests and potential information leakage about your searches and images
-user_pref("browser.urlbar.addons.featureGate", false); // disable add-on suggestion entries in the urlbar
-user_pref("browser.urlbar.amp.featureGate", false); // disable AMP/adMarketplace suggestion entries in the urlbar
-user_pref("browser.urlbar.fakespot.featureGate", false); // disable Fakespot suggestion entries in the urlbar
-user_pref("browser.urlbar.mdn.featureGate", false); // disable MDN suggestion entries in the urlbar
-user_pref("browser.urlbar.showSearchTerms.enabled", false); // keep full URLs visible instead of replacing with search terms
-user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false); // disable non-sponsored Firefox Suggest entries
-user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false); // disable sponsored Firefox Suggest entries
-user_pref("browser.urlbar.suggest.searches", false); // disable address-bar search suggestions
-user_pref("browser.urlbar.weather.featureGate", false); // disable weather suggestion entries in the urlbar
-user_pref("browser.urlbar.wikipedia.featureGate", false); // disable Wikipedia suggestion entries in the urlbar
-user_pref("browser.urlbar.yelp.featureGate", false); // disable Yelp suggestion entries in the urlbar
+user_pref("browser.search.separatePrivateDefault.enabled", true); // use a separate default search engine in private windows; default = false
+user_pref("browser.search.separatePrivateDefault.featureGate", true); // show the private window search engine option in Settings; default = false
+// user_pref("browser.search.visualSearch.featureGate", false); // hide "Search Image with Google Lens" in the image context menu; using it sends the image to Google; default = true
+user_pref("browser.urlbar.addons.featureGate", false); // disable add-on suggestions in the address bar; default = false
+user_pref("browser.urlbar.amp.featureGate", false); // disable sponsored AMP suggestions in the address bar; default = false
+user_pref("browser.urlbar.fakespot.featureGate", false); // disable Fakespot suggestions in the address bar; default = false
+user_pref("browser.urlbar.mdn.featureGate", false); // disable MDN suggestions in the address bar; default = false
+user_pref("browser.urlbar.showSearchTerms.enabled", false); // show the URL instead of the search terms on result pages; only matters while showSearchTerms.featureGate is true; default = true
+user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false); // disable non-sponsored Firefox Suggest results; default = false
+user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false); // disable sponsored Firefox Suggest results; default = false
+user_pref("browser.urlbar.suggest.searches", false); // disable search engine suggestions in the address bar; default = true
+user_pref("browser.urlbar.weather.featureGate", false); // disable weather suggestions in the address bar; default = false
+user_pref("browser.urlbar.wikipedia.featureGate", false); // disable Wikipedia suggestions in the address bar; default = false
+user_pref("browser.urlbar.yelp.featureGate", false); // disable Yelp suggestions in the address bar; default = false
 
 /** SECURITY ***/
-// user_pref("devtools.debugger.remote-enabled", false); // disable remote debugging to prevent potential unauthorized access to the browser's debugging interface, which could be exploited by attackers to gain insights into browser internals or execute malicious code; this is especially important if you do not use remote debugging features, so use this if you prefer better security against potential remote attacks over the ability to use remote debugging features; default = false
-user_pref("dom.disable_window_move_resize", true); // prevent websites from moving or resizing the browser window, which can be used for malicious purposes such as clickjacking or creating fake login screens; this will improve security by preventing websites from manipulating the browser window in ways that can trick users into performing unintended actions, but it may also break functionality on some sites that rely on window manipulation for legitimate purposes, so use this if you prefer better security over potential website functionality issues
-user_pref("dom.security.https_only_mode_send_http_background_request", false); // disable automatic background HTTP requests for HTTPS-Only Mode to prevent potential information leakage about user browsing patterns
-user_pref("security.cert_pinning.enforcement_level", 2); // enforce strict cert pinning checks for stronger MITM resistance
-// user_pref("security.OCSP.enabled", 1); // enable OCSP fetching for stricter certificate revocation checks
-// user_pref("security.OCSP.require", true); // hard-fail OCSP fetch failures when OCSP checks are enabled
-// user_pref("security.pki.crlite_mode", 2); // enforce both revoked and not-revoked CRLite results; default = 2
-user_pref("security.remote_settings.crlite_filters.enabled", true); // keep CRLite revocation filters enabled
-user_pref("security.ssl.require_safe_negotiation", true); // require safe TLS renegotiation to block legacy downgrade paths
-// security.tls.version.min possible values:
+// user_pref("devtools.debugger.remote-enabled", false); // disable remote debugging connections; default = false in official Mozilla builds
+user_pref("dom.disable_window_move_resize", true); // stop sites from moving or resizing the browser window; default = false
+user_pref("dom.security.https_only_mode_send_http_background_request", false); // HTTPS-Only: don't send a background plain HTTP request when HTTPS is slow; the fallback page may take longer to appear; default = true
+user_pref("security.cert_pinning.enforcement_level", 2); // strict certificate pinning, also for user-added root certificates; breaks antivirus HTTPS scanning, corporate TLS proxies and debugging proxies (mitmproxy, Fiddler) on pinned sites; default = 1
+// user_pref("security.OCSP.enabled", 1); // fetch OCSP for DV and EV certificates (0 = off, 1 = DV and EV, 2 = EV only); Betterfox sets 0 and relies on CRLite; default = 1
+// user_pref("security.OCSP.require", true); // hard-fail: block the site when its OCSP server can't be reached; breaks sites while responders are down; default = false
+// user_pref("security.pki.crlite_mode", 2); // enforce CRLite revocation results (0 = off, 1 = telemetry only, 2 = enforce); default = 2
+user_pref("security.remote_settings.crlite_filters.enabled", true); // download CRLite revocation filters; default = true
+user_pref("security.ssl.require_safe_negotiation", true); // refuse TLS servers without secure renegotiation (RFC 5746); may break very old servers; default = false
+
+// security.tls.version.min values:
 // 1 = TLS 1.0
 // 2 = TLS 1.1
 // 3 = TLS 1.2
 // 4 = TLS 1.3
-// user_pref("security.tls.version.min", 3); // set the minimum TLS version to enforce the lowest allowed protocol; TLS 1.2 is still widely supported and considered secure, while TLS 1.0 and 1.1 are deprecated and have known vulnerabilities, so setting this to 3 will block those older protocols while maintaining compatibility with most modern websites; if you want to enforce TLS 1.3 only, you can set this to 4, but be aware that it may cause connectivity issues with sites that do not yet support TLS 1.3, so use this if you prefer stronger security over potential connectivity problems; default = 3 
-user_pref("signon.autofillForms", false); // disable automatic credential autofill on page load
+// user_pref("security.tls.version.min", 3); // minimum TLS version; 4 breaks sites without TLS 1.3; default = 3
+user_pref("signon.autofillForms", false); // don't autofill saved logins on page load, pick them from the field instead; default = true
 
 /** SESSION ***/
-user_pref("browser.sessionstore.privacy_level", 2); // avoid storing extra form and POST data in session restore
-// user_pref("toolkit.winRegisterApplicationRestart", false); // disable automatic restart/session restore after Windows reboot
+user_pref("browser.sessionstore.privacy_level", 2); // don't save form data, POST data or cookies in session restore for any site (0 = all sites, 1 = unencrypted sites only, 2 = none); default = 0
+// user_pref("toolkit.winRegisterApplicationRestart", false); // don't let Windows restart Firefox after a reboot; Windows only; default = true
 
 /** SHUTDOWN SANITIZING ***/
-// user_pref("privacy.sanitize.sanitizeOnShutdown", true); // run configured data cleanup every time Firefox closes
-// user_pref("privacy.sanitize.timeSpan", 0); // default manual cleanup range to everything
-// user_pref("privacy.clearOnShutdown_v2.cache", true); // clear cache on shutdown
-// user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", true); // clear cookies and storage on shutdown (except allowed sites); i suggest to add any sites you log into regularly to the cookie exceptions list to avoid having to log in every time you restart the browser, but this is up to you
-// user_pref("privacy.clearOnShutdown_v2.formdata", true); // clear form history on shutdown
-// user_pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", true); // [Firefox 136+] clear browsing history and download history on shutdown; allows more granular control than the legacy v2 consolidated preference below
-// user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", true); // [Firefox 128-135] clear history, form data, and download history on shutdown; consolidated legacy preference maintained for compatibility with ESR and older releases
-// user_pref("privacy.clearOnShutdown_v2.siteSettings", false); // keep site settings on shutdown
-// user_pref("privacy.clearHistory.cache", true); // include cache in manual Clear History defaults
-// user_pref("privacy.clearHistory.cookiesAndStorage", true); // include cookies/storage in manual Clear History defaults
-// user_pref("privacy.clearHistory.formdata", true); // include form data in manual Clear History defaults
-// user_pref("privacy.clearHistory.siteSettings", true); // include site settings in manual Clear History defaults
-// user_pref("privacy.clearSiteData.cache", true); // include cache in manual Clear Data defaults
-// user_pref("privacy.clearSiteData.cookiesAndStorage", true); // include cookies/storage in manual Clear Data defaults
-// user_pref("privacy.clearSiteData.formdata", true); // include form data in manual Clear Data defaults
-// user_pref("privacy.clearSiteData.siteSettings", true); // include site settings in manual Clear Data defaults
+// the clearOnShutdown_v2 prefs only apply while privacy.sanitize.sanitizeOnShutdown is true
+// user_pref("privacy.sanitize.sanitizeOnShutdown", true); // clear the selected data every time Firefox closes; default = false
+// user_pref("privacy.sanitize.timeSpan", 0); // default time range in the Clear History dialog (0 = everything, 1 = last hour); default = 1
+// user_pref("privacy.clearOnShutdown_v2.cache", true); // clear cache on shutdown; default = true
+// user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", true); // clear cookies and site data on shutdown, except sites with an exception; add sites you stay logged into as exceptions; default = true
+// user_pref("privacy.clearOnShutdown_v2.formdata", true); // clear saved form history on shutdown; default = false
+// user_pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", true); // clear browsing and download history on shutdown; default = true
+// user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", true); // legacy pref kept only to migrate old settings; not needed on ESR 140 or later; default = true
+// user_pref("privacy.clearOnShutdown_v2.siteSettings", false); // keep site settings on shutdown; default = false
+// user_pref("privacy.clearHistory.cache", true); // Clear History dialog: cache checked by default; default = true
+// user_pref("privacy.clearHistory.cookiesAndStorage", true); // Clear History dialog: cookies and site data checked by default; default = true
+// user_pref("privacy.clearHistory.formdata", true); // Clear History dialog: form history checked by default; default = false
+// user_pref("privacy.clearHistory.siteSettings", true); // Clear History dialog: site settings checked by default; default = false
+// user_pref("privacy.clearSiteData.cache", true); // Settings > Clear Data: cache checked by default; default = true
+// user_pref("privacy.clearSiteData.cookiesAndStorage", true); // Settings > Clear Data: cookies and site data checked by default; default = true
+// user_pref("privacy.clearSiteData.formdata", true); // Settings > Clear Data: form history checked by default; default = false
+// user_pref("privacy.clearSiteData.siteSettings", true); // Settings > Clear Data: site settings checked by default; default = false
 
 /** TAB & WINDOW BEHAVIOR ***/
-user_pref("browser.link.open_newwindow", 3); // open new windows in a new tab instead; this will make all links that would normally open in a new window (e.g. target="_blank") open in a new tab instead, which can help keep your browsing organized and prevent unwanted pop-up windows
-user_pref("browser.link.open_newwindow.restriction", 0); // apply the tab-open rule to all window.open methods
-user_pref("browser.tabs.searchclipboardfor.middleclick", false); // prevent accidental clipboard search/open on middle-click new-tab
-user_pref("layout.word_select.eat_space_to_next_word", false); // stops space capture on word double-click (optional tweak)
+user_pref("browser.link.open_newwindow", 3); // open links that target a new window in a new tab instead; default = 3
+user_pref("browser.link.open_newwindow.restriction", 0); // apply open_newwindow to every window.open() call, including sized popups, so some login popups (OAuth, SSO) open as tabs (0 = all, 1 = never, 2 = except popups with features); default = 2
+user_pref("browser.tabs.searchclipboardfor.middleclick", false); // middle-clicking the new tab button doesn't open or search the clipboard text; default = false (true on Linux)
+user_pref("layout.word_select.eat_space_to_next_word", false); // double-clicking a word doesn't also select the space after it; default = true on Windows, false elsewhere
 
 /** TELEMETRY ***/
-user_pref("beacon.enabled", false); // disable the Beacon API to prevent websites from sending asynchronous analytics data that can be used for tracking; add a custom uBlock filter to prevent breakage on sites that use sendBeacon for legitimate purposes: *##+js(set-constant, navigator.sendBeacon, trueFunc)
-user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disables Search Engine Results Page telemetry categorization
-user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false); // disable telemetry ping for Firefox Accounts
-user_pref("network.trr.confirmation_telemetry_enabled", false); // disable telemetry for Trusted Recursive Resolver (DNS over HTTPS)
-user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable telemetry for Nimbus experiments
-user_pref("toolkit.telemetry.reportingpolicy.firstRun", false); // disable telemetry reporting policy first run ping
+user_pref("beacon.enabled", false); // disable navigator.sendBeacon(); trackers can still use fetch() with keepalive, so the gain is small; to avoid site breakage add this uBlock Origin filter: *##+js(set-constant, navigator.sendBeacon, trueFunc); default = true
+user_pref("browser.search.serpEventTelemetryCategorization.enabled", false); // disable categorization of search result pages for telemetry; default = true
+user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false); // disable the Mozilla account client association ping; default = true
+user_pref("nimbus.telemetry.targetingContextEnabled", false); // disable Nimbus targeting context telemetry; default = true
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", false); // mark the data reporting first run as done; only changes when the data choices notice appears, doesn't disable telemetry; default = unset
 
 /** VPN ***/
-user_pref("browser.contentblocking.report.hide_vpn_banner", true); // hide VPN banner in content blocking report
-user_pref("browser.privatebrowsing.vpnpromourl", ""); // clear VPN promotional URL for private browsing
-user_pref("browser.vpn_promo.enabled", false); // disable VPN promotional content in the browser
-user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.vpnEnabled", false); // disable VPN enabled flag for Firefox Accounts toolbar
+user_pref("browser.contentblocking.report.hide_vpn_banner", true); // hide the Mozilla VPN banner on about:protections; default = false
+user_pref("browser.vpn_promo.enabled", false); // disable Mozilla VPN promotions; default = true
+user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.vpnEnabled", false); // hide Mozilla VPN in the account menu; default = true
 
 /****************************************************************************
  * SECTION: SMOOTHFOX                                                       *
