@@ -292,6 +292,12 @@ user_pref("network.http.http3.use_nspr_for_io", false); // HTTP/3: use the Rust 
 // user_pref("network.trr.mode", 5); // DoH off by choice, Firefox uses the OS resolver; set up encrypted DNS in the OS instead (e.g. Quad9, NextDNS, AdGuard, Mullvad); for DoH in Firefox use 2 or 3 with network.trr.uri; default = 0
 // user_pref("network.trr.uri", "https://dns.quad9.net/dns-query"); // DoH resolver for modes 2 and 3; when empty Firefox uses network.trr.default_provider_uri (Cloudflare); default = ""
 
+/** PERFORMANCE ***/
+user_pref("browser.cache.memory.capacity", 524288); // memory cache size in KB (512 MB); with the disk cache off this is the whole HTTP cache, and the automatic size (-1) is capped at 32 MB; default = -1
+user_pref("browser.cache.memory.max_entry_size", 20480); // largest single entry kept in the memory cache, in KB (20 MB); default = 5120
+user_pref("content.notify.interval", 120000); // restore Mozilla's default; Betterfox sets 100000, which only shows slow-loading pages slightly sooner; comment this line out to use Betterfox's value; default = 120000
+user_pref("network.buffer.cache.size", 65536); // network buffer segment size in bytes; must be a power of 2, Betterfox's 65535 is not; default = 32768
+
 /** PERMISSIONS ***/
 // permissions.default.* values:
 // 0 = always ask
