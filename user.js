@@ -251,7 +251,9 @@ user_pref("extensions.postDownloadThirdPartyPrompt", false); // check the site's
 // user_pref("media.av1.enabled", false); // disable AV1 on hardware without AV1 decoding (e.g. Apple Silicon before M3), where software decoding (dav1d) costs CPU and battery; sites fall back to VP9 or H.264; default = true
 
 /** MOZILLA UI ***/
+// user_pref("browser.aboutaddons.novaThemesPickerEnabled", false); // hide the Nova themes picker in the Add-ons Manager; default = false
 user_pref("browser.menu.showViewImageInfo", true); // show "View Image Info" in the image context menu; default = false (true on Developer Edition)
+// user_pref("browser.newtabpage.activity-stream.nova.enabled", false); // use the classic New Tab page instead of the Nova redesign; default = true
 // user_pref("browser.newtabpage.activity-stream.system.showWeather", true); // force the New Tab weather widget on where Mozilla hasn't enabled it for your region; it fetches weather for your approximate location; default = set by region
 // user_pref("browser.newtabpage.activity-stream.weather.display", "simple"); // weather widget style: "simple" (temperature only) or "detailed"; default = "detailed"
 // user_pref("browser.nova.enabled", false); // use the classic Firefox UI instead of the Nova redesign; default = true
