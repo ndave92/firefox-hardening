@@ -1,22 +1,18 @@
-//
 /* You may copy+paste this file and use it as it is.
- *
- * If you make changes to your about:config while the program is running, the
- * changes will be overwritten by the user.js when the application restarts.
- *
- * To make lasting changes to preferences, you will have to edit the user.js.
- */
+If you make changes to your about:config while the program is running, the
+changes will be overwritten by the user.js when the application restarts.
+To make lasting changes to preferences, you will have to edit the user.js. */
 
 /****************************************************************************
  * Betterfox                                                                *
  * "Ad meliora"                                                             *
  * version: 154                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
-****************************************************************************/
+*****************************************************************************/
 
 /****************************************************************************
  * SECTION: FASTFOX                                                         *
-****************************************************************************/
+*****************************************************************************/
 /** GENERAL ***/
 user_pref("gfx.content.skia-font-cache-size", 20);
 user_pref("content.notify.interval", 100000);
@@ -42,7 +38,7 @@ user_pref("network.dnsCacheExpiration", 3600);
 
 /****************************************************************************
  * SECTION: SECUREFOX                                                       *
-****************************************************************************/
+*****************************************************************************/
 /** TRACKING PROTECTION ***/
 user_pref("browser.contentblocking.category", "strict");
 user_pref("browser.download.start_downloads_in_tmp_dir", true);
@@ -148,7 +144,7 @@ user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
 
 /****************************************************************************
  * SECTION: PESKYFOX                                                        *
-****************************************************************************/
+*****************************************************************************/
 /** MOZILLA UI ***/
 user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
@@ -201,11 +197,15 @@ user_pref("browser.bookmarks.openInTabClosesMenu", false);
 user_pref("findbar.highlightAll", true);
 
 /****************************************************************************
- * START: MY OVERRIDES (grouped by categories A-Z ascending order)
-****************************************************************************/
-// visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
-// visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
-// Enter your personal overrides below this line:
+ * START: MY OVERRIDES (grouped by categories A-Z ascending order)          *
+*****************************************************************************/
+/* Visit:
+- https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
+- https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
+
+Note: Some user_prefs below are intentionally commented out, which means they are optional and/or platform-specific. You can uncomment them if you want to enable those settings. Please read the comments for each preference to understand their effects and potential drawbacks.
+
+Enter your personal overrides below this line: */
 
 /** AI ***/
 user_pref("browser.ml.chat.shortcuts", false); // hide the AI chatbot shortcut shown on text selection; default = true
@@ -262,15 +262,14 @@ user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false); // hide Mozil
 // user_pref("pdfjs.enableNova", false); // use the classic PDF viewer UI; Nova only applies while browser.nova.enabled is also true; default = true
 user_pref("sidebar.revamp", true); // enable the new sidebar; default = true
 
-// widget.non-native-theme.scrollbar.style values (non-default styles are experimental):
-// 0 = default platform style
-// 1 = macOS
-// 2 = GTK
-// 3 = Android
-// 4 = Windows 10
-// 5 = Windows 11
+/* widget.non-native-theme.scrollbar.style values (non-default styles are experimental):
+0 = default platform style
+1 = macOS
+2 = GTK
+3 = Android
+4 = Windows 10
+5 = Windows 11 */
 // user_pref("widget.non-native-theme.scrollbar.style", 0); // scrollbar style; default = 0
-
 // user_pref("widget.non-native-theme.win11.scrollbar.force-overlay-style", true); // always draw Windows 11 scrollbars in the thin overlay style that expands on hover; only affects Windows 11 style scrollbars; default = false
 
 /** NETWORK ***/
@@ -284,13 +283,13 @@ user_pref("network.dns.echconfig.enabled", true); // use Encrypted Client Hello 
 user_pref("network.file.disable_unc_paths", true); // block UNC network paths (\\server\share) in file:// URLs; Windows only; default = false
 user_pref("network.http.http3.use_nspr_for_io", false); // HTTP/3: use the Rust UDP I/O path instead of NSPR; default = false
 
-// network.trr.mode values:
-// 0 = off (default)
-// 1 = reserved (off)
-// 2 = DoH first, OS resolver as fallback
-// 3 = DoH only, no fallback
-// 4 = reserved (off)
-// 5 = off by choice
+/* network.trr.mode values:
+0 = off (default)
+1 = reserved (off)
+2 = DoH first, OS resolver as fallback
+3 = DoH only, no fallback
+4 = reserved (off)
+5 = off by choice */
 // user_pref("network.trr.mode", 5); // DoH off by choice, Firefox uses the OS resolver; set up encrypted DNS in the OS instead (e.g. Quad9, NextDNS, AdGuard, Mullvad); for DoH in Firefox use 2 or 3 with network.trr.uri; default = 0
 // user_pref("network.trr.uri", "https://dns.quad9.net/dns-query"); // DoH resolver for modes 2 and 3; when empty Firefox uses network.trr.default_provider_uri (Cloudflare); default = ""
 
@@ -301,10 +300,10 @@ user_pref("content.notify.interval", 120000); // restore Mozilla's default; Bett
 user_pref("network.buffer.cache.size", 65536); // network buffer segment size in bytes; must be a power of 2, Betterfox's 65535 is not; default = 32768
 
 /** PERMISSIONS ***/
-// permissions.default.* values:
-// 0 = always ask
-// 1 = allow
-// 2 = block
+/* permissions.default.* values:
+0 = always ask
+1 = allow
+2 = block */
 // user_pref("permissions.default.camera", 0); // ask before sites use the camera; default = 0
 // user_pref("permissions.default.image", 1); // load images; 2 blocks all images and breaks most sites; default = 1
 // user_pref("permissions.default.local-network", 0); // ask before sites connect to devices on your local network; default = 0
@@ -314,7 +313,7 @@ user_pref("network.buffer.cache.size", 65536); // network buffer segment size in
 // user_pref("permissions.default.shortcuts", 0); // sites may override Firefox keyboard shortcuts; 2 blocks this (no "ask" option); default = 0
 user_pref("permissions.default.xr", 2); // block WebXR (VR/AR) requests; allow per site in site permissions; default = 0
 
-/** PRIVACY **/
+/** PRIVACY ***/
 user_pref("device.sensors.enabled", false); // block all device sensor events (orientation, motion, light, proximity) for websites; overrides the per-sensor prefs below; default = true
 // per-sensor prefs, only used while device.sensors.enabled is true:
 // user_pref("device.sensors.ambientLight.enabled", false); // default = false
@@ -326,6 +325,10 @@ user_pref("dom.battery.enabled", false); // disable the Battery API; websites ca
 // user_pref("dom.gamepad.enabled", false); // disable the Gamepad API; breaks browser games and cloud gaming (e.g. Xbox Cloud Gaming); default = true
 // user_pref("privacy.trackingprotection.allow_list.baseline.enabled", true); // strict tracking protection: keep the exceptions that fix major site breakage; default = true
 // user_pref("privacy.trackingprotection.allow_list.convenience.enabled", true); // strict tracking protection: keep the exceptions that fix minor breakage, which may allow some trackers; default = true
+
+/** RENDERING ***/
+// user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5); // 5 = natural symmetric; default = -1 (use the system/default value); Windows only
+// user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100); // 0 = off, 100 = full; default = -1 (use the system/default value); Windows only
 
 /** SEARCH & URL BAR ***/
 user_pref("browser.search.separatePrivateDefault.enabled", true); // use a separate default search engine in private windows; default = false
@@ -354,11 +357,11 @@ user_pref("security.cert_pinning.enforcement_level", 2); // strict certificate p
 user_pref("security.remote_settings.crlite_filters.enabled", true); // download CRLite revocation filters; default = true
 user_pref("security.ssl.require_safe_negotiation", true); // refuse TLS servers without secure renegotiation (RFC 5746); may break very old servers; default = false
 
-// security.tls.version.min values:
-// 1 = TLS 1.0
-// 2 = TLS 1.1
-// 3 = TLS 1.2
-// 4 = TLS 1.3
+/* security.tls.version.min values:
+1 = TLS 1.0
+2 = TLS 1.1
+3 = TLS 1.2
+4 = TLS 1.3 */
 // user_pref("security.tls.version.min", 3); // minimum TLS version; 4 breaks sites without TLS 1.3; default = 3
 user_pref("signon.autofillForms", false); // don't autofill saved logins on page load, pick them from the field instead; default = true
 
@@ -405,16 +408,16 @@ user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.vpnEnabled", false); //
 
 /****************************************************************************
  * SECTION: SMOOTHFOX                                                       *
-****************************************************************************/
-// visit https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
-// Enter your scrolling overrides below this line:
+*****************************************************************************/
+/* Visit: https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
+Enter your scrolling overrides below this line: */
 
-/****************************************************************************************
- * OPTION: NATURAL SMOOTH SCROLLING V3 [MODIFIED]                                      *
-****************************************************************************************/
-// credit: https://github.com/AveYo/fox/blob/cf56d1194f4e5958169f9cf335cd175daa48d349/Natural%20Smooth%20Scrolling%20for%20user.js
-// recommended for 120hz+ displays
-// largely matches Chrome flags: Windows Scrolling Personality and Smooth Scrolling
+/****************************************************************************
+* OPTION: NATURAL SMOOTH SCROLLING V3 [MODIFIED]                            *
+*****************************************************************************/
+/* Credit: https://github.com/AveYo/fox/blob/cf56d1194f4e5958169f9cf335cd175daa48d349/Natural%20Smooth%20Scrolling%20for%20user.js
+Recommended for 120hz+ displays.
+Largely matches Chrome flags: Windows Scrolling Personality and Smooth Scrolling */
 user_pref("apz.overscroll.enabled", true); // DEFAULT NON-LINUX
 user_pref("general.smoothScroll", true); // DEFAULT
 user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS", 12);
@@ -430,4 +433,4 @@ user_pref("mousewheel.default.delta_multiplier_y", 300); // recommended to keep 
 
 /****************************************************************************
  * END: BETTERFOX                                                           *
-****************************************************************************/
+*****************************************************************************/
